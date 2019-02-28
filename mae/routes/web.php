@@ -132,5 +132,5 @@ Route::get('admin/web','Admin\Webcontroller@index');
 Route::get('admin/web/edit','Admin\Webcontroller@edit');
 Route::post('admin/web/update','Admin\Webcontroller@update');
 // 友情链接
-Route::resource('admin/link/create',)
+// Route::resource('admin/link/create',)
 
