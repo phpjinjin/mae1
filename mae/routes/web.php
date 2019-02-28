@@ -59,7 +59,6 @@ Route::resource('admin/user','Admin\UserController');
 
 
 
-Route::resource('/admin/cate','Admin\CateController');
 
 Route::get('welcome.blade.php',function(){
 	return view('admin.index.welcome');
@@ -134,3 +133,24 @@ Route::post('admin/web/update','Admin\Webcontroller@update');
 // 友情链接
 // Route::resource('admin/link/create',)
 
+
+
+
+
+
+
+
+
+// 7zc 专属战区
+
+
+//添加类别子分类
+Route::get('/admin/cate/create/{id}','Admin\CateController@create');
+Route::resource('/admin/cate','Admin\CateController');
+
+//商品属性展示
+Route::resource('/admin/goodval','Admin\GoodvalController');
+
+
+//轮播图管理
+Route::resource('/admin/slid','Admin\SlidController');

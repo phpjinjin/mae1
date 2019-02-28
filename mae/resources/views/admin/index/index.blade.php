@@ -115,6 +115,15 @@
 					<li><a data-href="/admin/cate" data-title="查看类别" href="javascript:void(0)">查看类别</a></li>
 			</ul>
 		</dd>
+	</dl>
+	<dl id="menu-product">
+			<dt><i class="Hui-iconfont">&#xe620;</i> 属性管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="/admin/goodval" data-title="商品属性列表" href="javascript:void(0)">商品列表</a></li>
+			</ul>
+		</dd>
+	</dl>
 		<dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 品牌管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -164,11 +173,11 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 轮播图管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="picture-list.blade.php" data-title="添加图片" href="javascript:void(0)">添加图片</a></li>
-					<li><a data-href="picture-list.blade.php" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>
+					<li><a data-href="/admin/slid/create" data-title="添加轮播" href="javascript:void(0)">添加轮播</a></li>
+					<li><a data-href="/admin/slid" data-title="轮播列表" href="javascript:void(0)">轮播列表</a></li>
 			</ul>
 		</dd>
-	</dl>
+	</dl>	
 		<dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe616;</i> 友情链接<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
