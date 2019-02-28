@@ -22,3 +22,65 @@ Route::resource('/admin/cate','Admin\CateController');
 Route::get('welcome.blade.php',function(){
 	return view('admin.index.welcome');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//fengwenting
+// 网站管理
+	Route::get('admin/web','Admin\Webcontroller@index');
+	Route::get('admin/web/edit','Admin\Webcontroller@edit');
+	Route::post('admin/web/update','Admin\Webcontroller@update');
+//友情链接
+	//Route::resource('admin/link/create',)
