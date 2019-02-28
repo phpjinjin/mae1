@@ -22,3 +22,39 @@ Route::resource('/admin/cate','Admin\CateController');
 Route::get('welcome.blade.php',function(){
 	return view('admin.index.welcome');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// wangfan
+// 广告表
+Route::resource('/admin/adver','Admin\AdverController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// endwangfan

@@ -146,8 +146,8 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 广告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="article-list.blade.php" data-title="添加广告" href="javascript:void(0)">添加广告</a></li>
-					<li><a data-href="article-list.blade.php" data-title="广告列表" href="javascript:void(0)">广告列表</a></li>
+					<li><a data-href="/admin/adver/create" data-title="添加广告" href="javascript:void(0)">添加广告</a></li>
+					<li><a data-href="/admin/adver" data-title="广告列表" href="javascript:void(0)">广告列表</a></li>
 			</ul>
 		</dd>
 	</dl>
