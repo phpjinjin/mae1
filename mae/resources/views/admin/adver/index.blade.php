@@ -38,7 +38,7 @@
         			
 				  <tr class="text-c">
 				    <td>
-				      <input name="ddd" type="checkbox" value="{{ $v->advid }}">
+				      
 				  	</td>
 				    <td>{{$v->amsg}}</td>
 				    <td>{{ $v->atitle }}</td>

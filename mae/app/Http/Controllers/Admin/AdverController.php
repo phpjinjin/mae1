@@ -193,7 +193,6 @@ class AdverController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         //删除操作找到表单传过来的id值找到对应数据执行删除
         $res1 = Adver::destroy($id);
         //判断是否正常
