@@ -15,7 +15,49 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//后台首页路由
 Route::get('/admin','Admin\IndexController@index');
+//后台用户管理
+Route::resource('admin/user','Admin\UserController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::resource('/admin/cate','Admin\CateController');
 
