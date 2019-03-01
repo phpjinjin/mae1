@@ -19,7 +19,12 @@ Route::get('/', function () {
 Route::get('/admin','Admin\IndexController@index');
 //后台用户管理
 Route::resource('admin/user','Admin\UserController');
-
+//前台首页路由
+Route::resource('home/index','Home\HomeController');
+//前台登录页面
+Route::resource('home/login','Home\LoginController');
+//前台注册页面
+Route::resource('home/register','Home\RegisterController');
 
 
 

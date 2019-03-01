@@ -60,15 +60,14 @@ class UserController extends Controller
         $users->email = $data['email'];
         $users->power = $data['power'];
         $res = $users->save();
-       
-       if($res == true){
-            DB::commit();
-            return redirect('admin/user')->with('success','添加成功');
+    
+        if($res){
+            return redirect('/admin/user')->with('success','添加成功');
         }else{
-            DB::rollBack();
             return back()->with('error','添加失败');
         }
     }
+    
 
     /**
      * Display the specified resource.

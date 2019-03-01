@@ -31,15 +31,20 @@
 
 <article class="page-container " style="float:left;width:80%;position: relative; top:50px">
 
-	@if (count($errors) > 0)
-    <div class="mws-form-message error">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+	<!-- 显示错误消息 开始 -->
+	            @if (session('success'))
+	                <div class="class='alert alert-success" role="lert">
+	                    {{ session('success') }}
+	                </div>
+	            @endif
+
+
+	            @if (session('error'))
+	                <div class="class='alert alert-danger" role="lert">
+	                    {{ session('error') }}
+	                </div>
+	            @endif
+	<!-- 显示错误消息 结束 -->
 
 
 	<form action="/admin/adver" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
