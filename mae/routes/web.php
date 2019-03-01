@@ -85,10 +85,13 @@ Route::get('welcome.blade.php',function(){
 
 
 
-// 广告表
+
+
+//后台 广告表
 Route::resource('/admin/adver','Admin\AdverController');
-
-
+Route::get('/admin/works/putaway/{id}','Admin\WorksController@putaway');
+//后台文章管理
+Route::resource('/admin/works','Admin\WorksController');
 
 
 
@@ -159,3 +162,4 @@ Route::resource('/admin/goodval','Admin\GoodvalController');
 
 //轮播图管理
 Route::resource('/admin/slid','Admin\SlidController');
+

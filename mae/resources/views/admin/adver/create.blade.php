@@ -1,6 +1,21 @@
 @extends('admin.public.ifram')
 
 
+<!-- 显示错误消息 开始 -->
+            @if (session('success'))
+                <div class="class='alert alert-success" role="lert">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+
+            @if (session('error'))
+                <div class="class='alert alert-danger" role="lert">
+                    {{ session('error') }}
+                </div>
+            @endif
+<!-- 显示错误消息 结束 -->
+
 
 
 <link rel="stylesheet" type="text/css" href="/d/plugins/colorpicker/colorpicker.css" media="screen">
