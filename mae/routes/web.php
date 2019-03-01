@@ -36,9 +36,12 @@ Route::get('welcome.blade.php',function(){
 
 
 
-// wangfan
-// 广告表
+
+//后台 广告表
 Route::resource('/admin/adver','Admin\AdverController');
+Route::get('/admin/works/putaway/{id}','Admin\WorksController@putaway');
+//后台文章管理
+Route::resource('/admin/works','Admin\WorksController');
 
 
 
@@ -54,7 +57,3 @@ Route::resource('/admin/adver','Admin\AdverController');
 
 
 
-
-
-
-// endwangfan
