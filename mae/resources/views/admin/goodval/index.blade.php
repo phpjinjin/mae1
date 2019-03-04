@@ -1,21 +1,14 @@
 @extends('admin.public.ifram')
+<style type="text/css">
+	#lang{
+		width:50px;
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space:nowrap;
+	    text-align:center;
+	}
 
-	<div class="text-c">
-		<form class="Huiform" method="post" action="" target="_self">
-			<input type="text" placeholder="分类名称" value="" class="input-text" style="width:120px">
-			<span class="btn-upload form-group">
-			<input class="input-text upload-url" type="text" name="uploadfile-2" id="uploadfile-2" readonly style="width:200px">
-			
-			<input type="file" multiple name="file-2" class="input-file">
-			</span> <span class="select-box" style="width:150px">
-			<select class="select" name="brandclass" size="1">
-				<option value="1" selected>国内品牌</option>
-				<option value="0">国外品牌</option>
-			</select>
-			</span>
-				<button type="button" class="btn btn-success" id="" name="" onClick="picture_colume_add(this);"><i class="Hui-iconfont">&#xe600;</i> 添加</button>
-		</form>
-	</div>
+</style>
 	<div class="page-container">
 	<!-- 显示错误消息 开始 -->
             @if (session('success'))
@@ -31,7 +24,7 @@
             @endif
 <!-- 显示错误消息 结束 -->
 <div class="mt-20">
-	<form action="/admin/cate" method="get">
+	<form action="/admin/goodval" method="get" style="width:100%;">
 		<div id="DataTables_Table_0_wrapper" style="width:100%;" class="dataTables_wrapper no-footer" ><div class="dataTables_length" id="DataTables_Table_0_length"><label>显示
 			<select name="count" aria-controls="DataTables_Table_0" class="select">
 				<option value="5" @if(isset($request['count']) && $request['count'] ==5) selected @endif>5</option>
@@ -49,42 +42,76 @@
 			<thead>
 				<tr class="text-c" role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 25px;" aria-label="" width="25"><input type="checkbox" name="" value=""></th>
 					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">属性ID</th>
-					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">商品Id</th>
-					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">类别Id</th>
-					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">属性值</th>
+					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">商品名称</th>
+					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">商品花材</th>
+					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">包装</th>
+					<th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 70px;" aria-sort="descending" aria-label="ID: 升序排列" width="70">花语</th>
 					<th class="sorting_disabled" rowspan="1" colspan="1" style="width: 100px;" aria-label="操作" width="100">操作</th>
 				</tr>
 			</thead>
 			<tbody>
-			
-			<tr class="text-c odd" role="row">
+			@foreach($goodval_data as $k=>$v)
+			<tr id="tr{{ $v->vid }}" class="text-c odd" role="row">
 					<td><input name="" type="checkbox" value=""></td>
-					<td class="sorting_1"></td>
-					<td class="sorting_1"></td>
+					<td class="sorting_1">{{ $v->vid }}</td>
+					<td class="sorting_1">{{ $v->gid }}</td>
 					
-					<td class="sorting_1"></td>
-					<td class="sorting_1"></td>
+					<td class="sorting_1">{{ $v->wood }}</td>
+					<td class="sorting_1">{{ $v->pack }}</td>
+					<td class="sorting_1" style="width:60px;"><div id="lang" title="{{ $v->lang }}">{{ $v->lang }}</div></td>
 					<td class="f-14 product-brand-manage">
-						<form action="" method="post">
+						
+						<form action="/admin/goodval/{{ $v->vid }}" method="post">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
-							<a style="text-decoration:none" onclick="product_brand_edit('修改分类','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont"></i></a> 
-							<button type="submit" style="background:none;border:none;" class="ml-5" onclick="active_del(this,'10001')" style="background:none;"><i class="Hui-iconfont" title="删除"></i></button>&nbsp;&nbsp;
+							<input type="hidden" name="vid" value="{{ $v->vid }}">
+							<a style="text-decoration:none" href="javascript:;" onclick="shows({{ $v->vid }})" title="查看详情"><i class="Hui-iconfont">&#xe69c;</i></a>
+							<a style="text-decoration:none" href="javascript:;" onclick="edit({{ $v->vid }})" title="编辑"><i class="Hui-iconfont"></i></a>
+							<!-- <a style="text-decoration:none" href="javascript:;" onclick="dele({{ $v->vid }})" title="删除"><i class="Hui-iconfont"></i></a> -->
+							<!-- <button type="submit" style="background:none;border:none;" class="ml-5" style="background:none;"><i class="Hui-iconfont" title="删除"></i></button>&nbsp;&nbsp; -->
 						</form>
+
 					</td>
 				</tr>
-			
+			@endforeach
 			</tbody>
 		</table>
 
 		
-		<div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-			<a class="paginate_button previous disabled" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" id="DataTables_Table_0_previous">上一页</a>
-			<span>
-				
-			</span>
-				<a class="paginate_button next disabled" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" id="DataTables_Table_0_next">下一页</a>
+		
 		</div>
-		</div>
+		<div style="float:right;">{{ $goodval_data->appends($request)->links() }}</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+		function shows(id){
+		layer.open({
+			  type: 2,
+			  title: '详细信息',
+			  shadeClose: true,
+			  shade: 0.6,
+			  area: ['580px', '50%'],
+			  content: '/admin/goodval/'+id,
+			});
+		}
+		
+		function edit(id){
+		layer.open({
+			  type: 2,
+			  title: '修改属性',
+			  shadeClose: true,
+			  shade: 0.6,
+			  area: ['580px', '50%'],
+			  content: '/admin/goodval/'+id+'/edit',
+			});
+		}
+		
+
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭
+		if(index)
+		{
+			window.parent.location.reload();
+		}
+</script>

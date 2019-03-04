@@ -146,11 +146,16 @@ Route::post('admin/web/update','Admin\Webcontroller@update');
 
 //添加类别子分类
 Route::get('/admin/cate/create/{id}','Admin\CateController@create');
+//类别管理
 Route::resource('/admin/cate','Admin\CateController');
 
-//商品属性展示
+//属性管理 
+Route::get('/admin/goodval/dele/{id}','Admin\GoodvalController@dele');
 Route::resource('/admin/goodval','Admin\GoodvalController');
 
+//商品管理
+Route::get('/admin/goods/dele/{id}','Admin\GoodsController@dele');
+Route::resource('/admin/goods','Admin\GoodsController');
 
 //轮播图管理
 Route::resource('/admin/slid','Admin\SlidController');

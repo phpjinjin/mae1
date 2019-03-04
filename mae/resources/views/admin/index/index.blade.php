@@ -35,8 +35,8 @@
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.blade.php')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
 							<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.blade.php')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.blade.php')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
-							<li><a href="javascript:;" onclick="member_add('添加用户','member-add.blade.php','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
+							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.blade.php')"><i class="Hui-iconfont">&#xe60d;</i> 产品</a></li>
+							<li><a href="javascript:;" onclick="member_add('添加商品','/admin/goods','','510')"><i class="Hui-iconfont">&#xe620;</i> 商品</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -120,7 +120,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 属性管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="/admin/goodval" data-title="商品属性列表" href="javascript:void(0)">商品列表</a></li>
+					<!-- <li><a data-href="/admin/goodval/create" data-title="添加属性" href="javascript:void(0)">添加属性</a></li> -->
+					<li><a data-href="/admin/goodval" data-title="商品属性列表" href="javascript:void(0)">属性列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -137,8 +138,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-category.blade.php" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-					<li><a data-href="product-list.blade.php" data-title="商品管理" href="javascript:void(0)">商品管理</a></li>
+					<li><a data-href="/admin/goods/create" data-title="添加商品" href="javascript:void(0)">添加商品</a></li>
+					<li><a data-href="/admin/goods" data-title="商品管理" href="javascript:void(0)">商品管理</a></li>
 			</ul>
 		</dd>
 	</dl>

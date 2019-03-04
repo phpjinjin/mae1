@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Goodval extends Model
+class GoodsPic extends Model
 {
-    public $table = "goods_value";
+    public $table = "goods_pic";
 
-    public $primaryKey = 'vid';
+    public $primaryKey = 'id';
 
     public $timestamps = false;
 }
