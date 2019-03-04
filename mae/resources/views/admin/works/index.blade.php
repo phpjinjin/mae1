@@ -50,9 +50,9 @@
 			<tbody>
 				  @foreach($data as $k=>$v )
         			
-				  <tr class="text-c" id="tr{{ $v->wid }}">
+				  <tr class="text-c" id="tr{{ $v->wid }}" >
 				   
-				    <td>{{ $v->wtitle  or ''}}</td>
+				    <td >{{ $v->wtitle  or ''}}</td>
 				    <td>{{ $v->wuname  or '' }}</td>
 				    <td>
 				      <a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">
