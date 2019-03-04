@@ -18,13 +18,13 @@
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/js/bootstrap.js" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/js/bootstrap.min.js" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/js/jquery-3.3.1.min.js" />
-<link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/js/nmp.js" />
+<link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/js/npm.js" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap-theme.css" />
 
 
 <!--end bootstrap end-->
-
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
 
 

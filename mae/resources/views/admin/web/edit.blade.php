@@ -1,4 +1,14 @@
 @extends('admin.public.ifram')
+	<!-- 显示错误信息 -->
+	@if (count($errors) > 0)
+	    <div class="mws-form-message error">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
 	<h2 align="center" style="color: #aaa;">修改网站信息</h2>
 		<form action="/admin/web/update" method="post" class="form form-horizontal" enctype="multipart/form-data">
 			{{csrf_field()}}
@@ -59,7 +69,6 @@
 					网站logo：<img src="{{ asset('/uploads/web/'.$webs[0]->logo) }}" id="show" width="100"  onclick="pic()">
 				</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					
 					<div class="uploader-thum-container">
 						<div id="fileList" class="uploader-list" style="display: none;">
 							<input class="input-file" type="file" name="logo" onchange="changepic(this)" id="file" value="{{$webs[0]->logo}}">
@@ -71,7 +80,9 @@
 				<input class="btn btn-primary " type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" onclick="test()">
 			</div>
 		</form>
-	</table>
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
 	<script type="text/javascript">
 		 function changepic() {
 	        var reads= new FileReader();
@@ -86,4 +97,6 @@
     		alert('这关系到整个网站的运营，请慎重决定');
     	}
 	</script>
+	
+
 	

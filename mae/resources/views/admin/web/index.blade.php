@@ -1,4 +1,19 @@
 @extends('admin.public.ifram')
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+	<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
+	@if (session('success'))
+        <script type="text/javascript">
+    		layer.msg('修改成功',{icon:1});
+		</script>
+    @endif
+
+
+    @if (session('error'))
+        <script type="text/javascript">
+    		layer.msg('修改失败',{icon:2});
+		</script>
+    @endif
 	<h2 align="center" style="color: #aaa;">网站信息管理</h2>
 	
 	<div style="width: 200px; float: right; margin-right: 25%;margin-top: -10px">
@@ -22,7 +37,7 @@
 				</tr>
 				<tr>
 					<th width="30%">网站logo</th>
-					<td><span id="logo" style="width: 200px;height: 200px"><img style="width: 250px;height: 100px" src="{{ asset('/uploads/web/'.$webs[0]->logo) }}"></span></td>
+					<td><span id="logo" style="width: 200px;height: 200px"><img class="img-thumbnail" src="{{ asset('/uploads/web/'.$webs[0]->logo) }}"></span></td>
 				</tr>
 				<tr>
 					<th width="30%">网站备案号</th>
