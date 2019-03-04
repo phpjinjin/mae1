@@ -8,7 +8,7 @@ class Goodval extends Model
 {
     public $table = "goods_value";
 
-    public $primaryKey = 'gvid';
+    public $primaryKey = 'vid';
 
     public $timestamps = false;
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goods extends Model
 {
+<<<<<<< HEAD
     
     
      //商品表
@@ -16,6 +17,14 @@ class Goods extends Model
     public $timestamps = false; 
     
     
+=======
+    public $table = "goods";
+
+    public $primaryKey = 'gid';
+
+    protected $dateFormat = 'U';
+
+>>>>>>> origin/7zc
     //建立对商品图片表的一对多
     public function goodspic()
     {

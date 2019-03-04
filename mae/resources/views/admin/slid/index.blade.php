@@ -56,10 +56,9 @@
 					<td><input name="" type="checkbox" value=""></td>
 					<td class="sorting_1">{{ $v->sid }}</td>
 					<td>{{ $v->stitle }}</td>
-					<td><a href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')"><img class="picture-thumb" src="{{ asset('uploads/slid/'.$v->simg) }}" width="210"></a></td>
+					<td><a href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')"><img src="{{ asset('uploads/slid/'.$v->simg) }}" width="77" height="77" class="img-thumbnail"></a></td>
 					<td class="text-l"><a class="maincolor" href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')">{{ $v->surl }}</a></td>
 					<td class="text-c">{{ $v->sort }}</td>
-					
 					<td class="td-status"><span class="label label-success radius">{{$v->nid==1 ? '已发布' : '未发布'}}</span></td>
 					<td class="td-manage">
 					<form action="/admin/slid/{{ $v->sid }}" method="post">

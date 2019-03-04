@@ -18,6 +18,13 @@
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap-theme.css" />
+
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
+<!-- layui -->
+<script src="/d/layui-v2.4.5/layui/layui.js"></script>
+<script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
+
+
 <!--end bootstrap end-->
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
 

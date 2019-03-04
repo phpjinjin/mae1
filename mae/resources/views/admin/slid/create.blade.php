@@ -47,7 +47,7 @@
 		<div class="row cl">
 
 			<label class="form-label col-xs-4 col-sm-2" for="file">
-				选择图片:<img src="" title="点击图片进行上传" id="show" style="width: 150px;margin-left:285px;">
+				选择图片:<img src="/d/images/default.jpg" title="点击图片进行上传" id="show" style="width: 150px;margin-left:285px;">
 			</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<div class="uploader-thum-container">
@@ -62,6 +62,7 @@
 		<div class="row cl" style="margin-top: 20px;">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<input type="submit" class="btn btn-success btn-uploadstar radius ml-10" value="开始上传"></button>
+				<input type="reset" class="btn btn-info btn-uploadstar radius ml-10" value="重置"></button>
 			</div>
 		</div>
 	</form>

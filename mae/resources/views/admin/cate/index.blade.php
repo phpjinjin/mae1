@@ -47,7 +47,7 @@
 			@foreach($cate_data as $k=>$v)
 			<tr class="text-c odd" role="row">
 					<td><input name="" type="checkbox" value=""></td>
-					<td class="sorting_1">{{ $v->ggid }}</td>
+					<td class="sorting_1">{{ $v->tid }}</td>
 					<td class="sorting_1">{{ $v->gtname }}</td>
 					<td class="sorting_1">{{ $v->pid }}</td>
 					<td class="sorting_1">{{ $v->path }}</td>
@@ -55,12 +55,12 @@
 					{{ $v->status ? '激活' : '未激活' }}
 					</td>
 					<td class="f-14 product-brand-manage">
-						<form action="/admin/cate/{{ $v->ggid }}" method="post">
+						<form action="/admin/cate/{{ $v->tid }}" method="post">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
 							<a style="text-decoration:none" onclick="product_brand_edit('修改分类','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont"></i></a> 
 							<button type="submit" style="background:none;border:none;" class="ml-5" onclick="active_del(this,'10001')" style="background:none;"><i class="Hui-iconfont" title="删除"></i></button>&nbsp;&nbsp;
-							<a style="text-decoration:none" onclick="product_brand_edit('添加子分类','codeing.html','1')" href="/admin/cate/create/{{ $v->ggid }}" title="添加子分类"><i class="Hui-iconfont">&#xe61f;</i></a> 
+							<a style="text-decoration:none" onclick="product_brand_edit('添加子分类','codeing.html','1')" href="/admin/cate/create/{{ $v->tid }}" title="添加子分类"><i class="Hui-iconfont">&#xe61f;</i></a> 
 						</form>
 					</td>
 				</tr>

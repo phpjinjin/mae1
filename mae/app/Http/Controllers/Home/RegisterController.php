@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Users;
+use App\Models\UsersDetail;
 class RegisterController extends Controller
 {
     /**
@@ -38,7 +39,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-        echo'1111';
+        dump($request->all());
     }
 
     /**

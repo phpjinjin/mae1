@@ -40,15 +40,15 @@
                     {{csrf_field()}}
                    <div class="user-email">
                       <label for="email"><i class="am-icon-envelope-o"></i></label>
-                      <input type="email" name="" id="email" placeholder="请输入邮箱账号">
+                      <input type="email" name="email" id="email" placeholder="请输入邮箱账号">
                    </div>                   
                    <div class="user-pass">
                       <label for="password"><i class="am-icon-lock"></i></label>
-                      <input type="password" name="" id="password" placeholder="设置密码">
+                      <input type="password" name="password" id="password" placeholder="设置密码">
                    </div>                   
                    <div class="user-pass">
                       <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-                      <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                      <input type="password" name="repassword" id="passwordRepeat" placeholder="确认密码">
                    </div> 
                     <div class="am-cf">
                         <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">

@@ -9,7 +9,7 @@ use DB;
 class CateController extends Controller
 {
     public static function getCate(){
-        $cate = Cate::select('*',DB::raw("concat(path,',',ggid) as paths"))->orderBy('paths','asc')->get();
+        $cate = Cate::select('*',DB::raw("concat(path,',',tid) as paths"))->orderBy('paths','asc')->get();
         foreach ($cate as $k=>$v){
             //统计path中 , 出现的次数
             $n = substr_count($v->path,',');
@@ -29,7 +29,7 @@ class CateController extends Controller
         $count = $request->input('count',5);
         $search = $request->input('search','');
 
-        $cate = Cate::select('*',DB::raw("concat(path,',',ggid) as paths"))->where('gtname','like','%'. $search.'%')->orderBy('paths','asc')->paginate($count);
+        $cate = Cate::select('*',DB::raw("concat(path,',',tid) as paths"))->where('gtname','like','%'. $search.'%')->orderBy('paths','asc')->paginate($count);
         //$cate = Cate::where('gtname','like','%'. $search.'%')->paginate($count);
         $tiao = Cate::count();
         foreach ($cate as $k=>$v){
@@ -75,7 +75,7 @@ class CateController extends Controller
             //获取父级分类信息
             $parent_data = Cate::find($data['pid']);
             //拼接路径  父级path,id
-            $data['path'] = $parent_data->path.','.$parent_data->ggid;
+            $data['path'] = $parent_data->path.','.$parent_data->tid;
         }
 
         $cate = new Cate;

@@ -51,6 +51,7 @@
 		<div class="row cl" style="margin-top: 20px;">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<input type="submit" class="btn btn-success btn-uploadstar radius ml-10" value="确认修改"></button>
+				<input type="reset" class="btn btn-info btn-uploadstar radius ml-10" value="重置"></button>
 			</div>
 		</div>
 	</form>

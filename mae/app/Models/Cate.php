@@ -8,7 +8,7 @@ class Cate extends Model
 {
     public $table = "goods_type";
 
-    public $primaryKey = 'ggid';
+    public $primaryKey = 'tid';
 
     public $timestamps = false;
 }
