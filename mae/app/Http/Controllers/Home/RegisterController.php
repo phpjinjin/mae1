@@ -15,7 +15,7 @@ class RegisterController extends Controller
     public function index()
     {
         //
-        return view('home.login_register.register');
+        return view('home.register.index');
     }
 
     /**

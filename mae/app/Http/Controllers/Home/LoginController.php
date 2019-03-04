@@ -15,7 +15,7 @@ class LoginController extends Controller
     public function index()
     {
         //
-        return view('home.login_register.index');
+        return view('home.login.index');
     }
 
     /**
