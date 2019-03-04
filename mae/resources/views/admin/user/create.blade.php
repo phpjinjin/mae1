@@ -10,15 +10,18 @@
 	<form class="form form-horizontal" id="form-admin-add" action="/admin/user" method="post">
 	{{csrf_field()}}
 	<!-- 显示错误信息 -->
-		@if (count($errors) > 0)
-		    <div class="mws-form-message error">
-		        <ul>
-		            @foreach ($errors->all() as $error)
-		                <li>{{ $error }}</li>
-		            @endforeach
-		        </ul>
-		    </div>
-		@endif
+		@if (session('success'))
+            <div class="class='alert alert-success" role="lert">
+                {{ session('success') }}
+            </div>
+        @endif
+
+
+        @if (session('error'))
+            <div class="class='alert alert-danger" role="lert">
+                {{ session('error') }}
+            </div>
+        @endif
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账号：</label>
 		<div class="formControls col-xs-8 col-sm-7">

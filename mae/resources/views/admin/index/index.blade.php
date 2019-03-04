@@ -183,8 +183,8 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 友情链接<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="article-list.blade.php" data-title="添加链接" href="javascript:void(0)">添加链接</a></li>
-					<li><a data-href="article-list.blade.php" data-title="链接列表" href="javascript:void(0)">链接列表</a></li>
+					<li><a data-href="/admin/link/create" data-title="添加链接" href="javascript:void(0)">添加链接</a></li>
+					<li><a data-href="/admin/link" data-title="链接列表" href="javascript:void(0)">链接列表</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -207,10 +207,6 @@
 			<dd>
 				<ul>
 					<li><a data-href="/admin/web" data-title="网站设置" href="javascript:void(0)">网站设置</a></li>
-					<li><a data-href="system-category.blade.php" data-title="栏目管理" href="javascript:void(0)">栏目管理</a></li>
-					<li><a data-href="system-data.blade.php" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
-					<li><a data-href="system-shielding.blade.php" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
-					<li><a data-href="system-log.blade.php" data-title="系统日志" href="javascript:void(0)">系统日志</a></li>
 			</ul>
 		</dd>
 	</dl>
