@@ -193,19 +193,25 @@ class AdverController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {   
+	 
+	 }
+	  /**
+     * 执行删除操作方法
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
     {
+         
+    $res = Adver::destroy($id);
+	   //  判断是否成功返回数据
+	     if($res){
+	     	echo '1';
+	     }else{
 
-        
-
-        //删除操作找到表单传过来的id值找到对应数据执行删除
-        $res1 = Adver::destroy($id);
-        //判断是否正常
-        if($res1){
-            
-            return redirect($_SERVER['HTTP_REFERER'])->with('success','删除成功');
-        }else{
-           //异常弹回
-            return redirect($_SERVER['HTTP_REFERER'])->with('error','删除失败');
-        }
+	     	echo 0;
+	     }
     }
 }

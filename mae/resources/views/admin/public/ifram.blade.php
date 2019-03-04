@@ -9,8 +9,8 @@
 <link rel="stylesheet" type="text/css" href="/d/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="/d/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="/d/static/h-ui.admin/css/style.css" />
-
-
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.min.js"></script>
 
 
 

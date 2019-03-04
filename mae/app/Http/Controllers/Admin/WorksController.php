@@ -9,7 +9,7 @@ use DB;
 class WorksController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *文章列表页
      *
      * @return \Illuminate\Http\Response
      */
@@ -17,7 +17,7 @@ class WorksController extends Controller
     {
           //默认一页显示两条数据
         $res = $request->input('count','2');
-        //取Works广告表的数据总数
+        //取Works文章表的数据总数
         $res1 = Works::count();
         //获取请求的参数
         $search = $request->input('search','');
@@ -30,18 +30,18 @@ class WorksController extends Controller
     } 
 
     /**
-     * Show the form for creating a new resource.
+     * 文章添加页面加载
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        //加载页面
         return view('admin.works.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 执行添加操作
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class WorksController extends Controller
         $data = $request->except(['_token']);
         //new一个模型
         $works = new Works;
-        //模型中的广告表属性赋值表单传过来的值
+        //模型中的文章表属性赋值表单传过来的值
         $works->wtitle = $data['wtitle'];
         $works->wuname = $data['wuname'];
         $works->wpic = $file_name;
@@ -96,14 +96,14 @@ class WorksController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 加载文章详情
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        //找到传过来的wid
         $data = DB::table('works')->where('wid',$id)->first();
 
 
@@ -112,21 +112,21 @@ class WorksController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 加载修改页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        //找到传值过来的id
          $works = DB::table('works')->where('wid',$id)->first();
 
         return view('admin.works.edit',['works'=>$works]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 执行修改信息
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -171,25 +171,41 @@ class WorksController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //删除操作找到表单传过来的id值找到对应数据执行删除
-        $res1 = Works::destroy($id);
-        //判断是否正常
-        if($res1){
-            
-            return redirect($_SERVER['HTTP_REFERER'])->with('success','删除成功');
-        }else{
-           //异常弹回
-            return redirect($_SERVER['HTTP_REFERER'])->with('error','删除失败');
-        }
-    }
+         
+   
 
+    }
+     /**
+     * 执行删除操作方法
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+         
+     if(Works::destroy($id)){
+     	echo '1';
+     	
+     }else{
+
+     	echo 0;
+     }
+
+    }
+    /**
+     * 文章上架下架
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function putaway($id)
     {
         //找到指定表单传过来的id值
@@ -197,22 +213,32 @@ class WorksController extends Controller
         //判断表单传过来的id值找到指定的字段判断然后执行
         if($data['wstatus'] == 0){
             $data->wstatus = 1;
-            $data->save();
+            $res1 = $data->save();
 
-            return redirect('admin/works ')->with('success','修改成功');
+	         if($res1){
+	               return redirect('admin/works ')->with('success','修改状态成功');
+	            }else{
+
+	                return back()->with('error','修改状态失败');
+	            }
 
         }elseif($data['wstatus'] == 1){
 
             $data->wstatus = 0;
 
-            $data->save();
+        	$res1 =   $data->save();
+	         if($res1){
+	               return redirect('admin/works ')->with('success','修改状态成功');
+	            }else{
 
-            return redirect('admin/works ')->with('success','修改成功');
+	                return back()->with('error','修改状态失败');
+	            }
+            
 
-        }else{
-
-            return back()->with('error','修改失败');
         }
+
+            
+        
 
 
     }

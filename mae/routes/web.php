@@ -87,13 +87,22 @@ Route::get('welcome.blade.php',function(){
 
 
 
+//后台 广告表删除路由
+Route::get('/admin/adver/adver/{id}','Admin\AdverController@delete');
 //后台 广告表
 Route::resource('/admin/adver','Admin\AdverController');
+//后台文章管理上架下架
 Route::get('/admin/works/putaway/{id}','Admin\WorksController@putaway');
+//后台文章管理删除
+Route::get('/admin/works/works/{id}','Admin\WorksController@delete');
 //后台文章管理
 Route::resource('/admin/works','Admin\WorksController');
-
-
+//后台浏览订单发货
+Route::get('/admin/orders/orderr/{id}','Admin\OrdersController@orderr');
+//后台浏览订单删除
+Route::get('/admin/orders/orders/{id}','Admin\OrdersController@delete');
+//后台浏览订单发货
+Route::resource('/admin/orders','Admin\OrdersController');
 
 
 
