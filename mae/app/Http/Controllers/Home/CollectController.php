@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Goods_collect;
 use App\Models\Goods;
-use App\Models\Link;
-use App\Models\Webs;
-use App\Models\Works;
-
-class HomeController extends Controller
+use DB;
+class CollectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,18 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         //
-        //return 2;
-        $webs = Webs::get();
-        $status = $webs[0]->status;
-        
-        // dd($status);
-        if($status == 1){
-
-            return view('home.index.home');
-        }
-        // else{
-        //     return view('');
-        // }
+        return view('home.collect.index');
     }
 
     /**
@@ -52,6 +39,22 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //
+        // DB::beginTransaction();
+        // $collect = new Goods_collect;
+        // $collect->uid = $request->uid;
+        // $collect->gid = $request->gid;
+        // $time = date('Y-m-d',time());
+        // $collect->collect_time = $time;
+
+        // $res = $link->save();
+
+        // if($res){
+        //     DB::commit();
+        //     return redirect('Home/collect')->with('success','添加成功');
+        // }else{
+        //     DB::rollBack();
+        //     return back()->with('error','添加失败');
+        // }
     }
 
     /**
@@ -98,4 +101,18 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function delete($id)
+    {
+        //
+        // $del = Goods_collect::destroy($id);
+        // //判断是否正常
+        // if($del){
+        //     return redirect($_SERVER['HTTP_REFERER'])->with('qxcg','删除成功');
+        // }else{
+        //    //异常弹回
+        //     return redirect($_SERVER['HTTP_REFERER'])->with('qxerror','删除失败');
+        // }
+    }
+    
 }

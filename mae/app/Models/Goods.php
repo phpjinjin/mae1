@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goods extends Model
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/flaobai
     
     
      //商品表
@@ -15,10 +18,14 @@ class Goods extends Model
     public $primaryKey='gid';
     //不验证时间
     public $timestamps = false; 
+<<<<<<< HEAD
 
     protected $dateFormat = 'U';
 
 
+=======
+    
+>>>>>>> origin/flaobai
     //建立对商品图片表的一对多
     public function goodspic()
     {

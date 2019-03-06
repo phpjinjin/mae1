@@ -19,8 +19,6 @@ Route::get('/', function () {
 Route::get('/admin','Admin\IndexController@index');
 //后台用户管理
 Route::resource('admin/user','Admin\UserController');
-//前台首页路由
-Route::resource('home/index','Home\HomeController');
 //前台登录页面
 Route::resource('home/login','Home\LoginController');
 //前台注册页面
@@ -143,13 +141,22 @@ Route::resource('/admin/orders','Admin\OrdersController');
 
 
 
-
- // 网站管理
+// 网站管理
 Route::get('admin/web','Admin\Webcontroller@index');
 Route::get('admin/web/edit','Admin\Webcontroller@edit');
 Route::post('admin/web/update','Admin\Webcontroller@update');
 // 友情链接
- Route::resource('admin/link','Admin\linkcontroller');
+Route::resource('admin/link','Admin\linkcontroller');
+// 前台首页路由
+Route::resource('home/index','Home\HomeController');
+// 前台收藏页
+Route::get('home/collect/delete/{id}','Home\CollectController@delete');
+Route::resource('home/collect','Home\CollectController');
+// 前台收货地址
+Route::get('home/address/edit','Home\AddressController@edit');
+Route::get('home/address/update/{id}','Home\AddressController@update');
+Route::get('home/address/delete/{id}','Home\AddressController@delete');
+Route::resource('home/address','Home\AddressController');
 
 
 

@@ -33,6 +33,8 @@
     
     
 <title>朝花夕拾</title>
+
+<link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -123,8 +125,7 @@
                         <div class="s_city_t"></div>
                         <div class="ss_list_c">
                             <ul>
-                                <li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                                <li><a href="/home/collect">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -450,7 +451,8 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
         <ul class="menu_r">                                                                                                                                               
-            <li><a href="Index.html">首页</a></li>
+
+            <li><a href="/home/index">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
