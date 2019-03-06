@@ -24,6 +24,7 @@ Route::resource('home/index','Home\HomeController');
 //前台登录页面
 Route::resource('home/login','Home\LoginController');
 //前台注册页面
+Route::get('home/register/changestatus/{id}/{token}','Home\RegisterController@changeStatus');
 Route::resource('home/register','Home\RegisterController');
 
 
