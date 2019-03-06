@@ -20,7 +20,7 @@
   <body>
 
     <div class="login-boxtitle">
-      <a href="home/demo.html"><img alt="" src="/r/images/logo3.png" /></a>
+      <!-- <a href="home/demo.html"><img alt="" src="/r/images/logo3.png" /></a> -->
     </div>
 
     <div class="res-banner">

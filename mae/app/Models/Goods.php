@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goods extends Model
 {
-<<<<<<< HEAD
+
     
     
      //商品表
@@ -15,16 +15,10 @@ class Goods extends Model
     public $primaryKey='gid';
     //不验证时间
     public $timestamps = false; 
-    
-    
-=======
-    public $table = "goods";
-
-    public $primaryKey = 'gid';
 
     protected $dateFormat = 'U';
 
->>>>>>> origin/7zc
+
     //建立对商品图片表的一对多
     public function goodspic()
     {
@@ -34,5 +28,10 @@ class Goods extends Model
     public function goodsval()
     {
         return $this->hasOne('App\Models\Goodval','gid');
+    }
+    //建立对类别的关联 多对一
+    public function goodstype()
+    {
+        return $this->belongsTo('App\Models\Cate','tid');
     }
 }

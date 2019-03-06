@@ -158,7 +158,11 @@ Route::post('admin/web/update','Admin\Webcontroller@update');
 
 
 
-// 7zc 专属战区
+
+
+
+
+
 
 
 //添加类别子分类
@@ -176,4 +180,18 @@ Route::resource('/admin/goods','Admin\GoodsController');
 
 //轮播图管理
 Route::resource('/admin/slid','Admin\SlidController');
+
+
+//前台商品展示
+Route::resource('/home/goods','Home\GoodsController');
+
+
+//加入购物车
+Route::get('/home/carts/add/{cnt}/{gid}','Home\CartsController@add');
+//减商品数量
+Route::get('/home/carts/jian/{cid}','Home\CartsController@jian');
+//加商品数量
+Route::get('/home/carts/jia/{cid}','Home\CartsController@jia');
+
+Route::resource('/home/carts','Home\CartsController');
 
