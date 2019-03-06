@@ -23,6 +23,7 @@ Route::resource('admin/user','Admin\UserController');
 Route::resource('home/login','Home\LoginController');
 //前台注册页面
 Route::get('home/register/changestatus/{id}/{token}','Home\RegisterController@changeStatus');
+Route::get('home/register/sendPhone','Home\RegisterController@sendphone');
 Route::resource('home/register','Home\RegisterController');
 
 

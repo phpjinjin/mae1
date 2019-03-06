@@ -37,7 +37,7 @@ class GoodsController extends Controller
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
         foreach ($data as $k=>$v){
-           $v->tid = Cate::where('tid','=',3)->first()->gtname;
+           $v->tid = $v->goodstype->gtname;
         }
         return view('admin.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }

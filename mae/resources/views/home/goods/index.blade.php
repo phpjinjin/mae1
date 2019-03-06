@@ -1,4 +1,4 @@
-@extends('home.index.head')
+@extends('home.index.content')
 
 @section('content')
 @section('menu')

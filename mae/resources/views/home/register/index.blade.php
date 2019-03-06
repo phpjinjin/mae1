@@ -75,7 +75,7 @@
                           <label for="code"><i class="am-icon-code-fork"></i></label>
                           <input type="tel" name="code" id="code" placeholder="请输入验证码">
                           
-                          <input type="button" id="dyMobileButton" value="获取 " onclick="sendPhone()" id="sendBtn">
+                          <input type="button" id="dyMobileButton" value="获取" onclick="sendPhone(this)" >
                     </div>
 
                      <div class="user-pass">
@@ -101,21 +101,62 @@
                 </div>
 
                 <script   type="text/javascript">
+                  // alert($);
                   $(function() {
                       $('#doc-my-tabs').tabs();
                     })
-                  function sendPhone()
+                  function editCon(){
+
+                      var t= 60;
+                      var time = null;
+                      if(time == null){
+                         time = setInterval(function(){
+                          t--;
+                          //  修改button 和内容
+                          $('#dyMobileButton').val('重新发送('+t+'s)');
+                          if(t < 1){
+                            //清楚定时器
+                            clearInterval(time);
+                            time = null;
+                            $('#dyMobileButton').val('获取');
+                            $('#dyMobileButton').attr('disabled',false);
+                          }
+                        },1000);
+                      }
+                       
+                      
+                  }
+                  function sendPhone(obj)
                   {   
-                      //console.log('aaaaaaaa');
+                      //接收手机号
+                      var phone =$('#phone').val();
+                      //定义正则匹配手机号是否格式正确
+                      var phone_grep = /^1{1}[3456789]{1}[0-9]{9}$/;
+                      // 使用正则检查手机号
+                      if(!phone_grep.test(phone)){
+                        return false;
+                      }
+                      // console.log('aaaaaaaa');
                       // 将js对象转换成jquery对象
                       var object = $(obj);
+                      // 设置button状态
+                      object.attr('disabled',true);
                       //获取当前按钮上的文字
                       var text = object.val();
-                      console.log(text);
-                      //发送ajax 请求后台
-                      $.get('./register/sendPhone',{},function(msg){
-                          console.log(msg);
-                      },'html');
+                      // console.log(text);
+                      if(text == '获取'){
+                          //发送ajax 请求后台
+                          $.get('/home/register/sendPhone/',{'phone':phone},function(msg){
+                              if(msg == 'ok'){
+                                  editCon();
+                              }else{
+
+                              }
+                          },'html');
+                        }else{
+                          return false;
+                        }
+                      
                       
                   }
                 </script>

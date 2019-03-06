@@ -150,4 +150,8 @@ class RegisterController extends Controller
     {
         //
     }
+    public function sendphone()
+    {
+        return view('home.register.sendPhone');
+    }
 }
