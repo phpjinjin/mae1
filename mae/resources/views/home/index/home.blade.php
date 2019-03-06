@@ -1,4 +1,5 @@
 @extends('home.index.head')
+<<<<<<< HEAD
 @section('content')
 <div class="i_bg bg_color">
     <div class="i_ban_bg">
@@ -585,4 +586,13 @@
         </div>
     </div>
     <!--End 猜你喜欢 End-->
+=======
+
+@section('content')
+
+>>>>>>> origin/7zc
+@endsection
+
+@section('none')
+<div class="leftNav">
 @endsection
