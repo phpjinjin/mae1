@@ -55,21 +55,21 @@
         			
 				  <tr class="text-c" id="tr{{ $v->oid }}">
 				    		
-				    <td>{{ $v->oid  or ''}}</td>
-				    <td>{{ $v->sum  or ''}}</td>
-				    <td>{{ $v->created_at  or ''}}</td>
-				    <td>{{ $v->uname  or ''}}</td>
-				    <td>{{ $v->addres  or '' }}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->oid  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->sum  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->created_at  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->uname  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->addres  or '' }}</td>
 				    
-				    <td>{{ $v->cnt  or ''}}</td>     
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->cnt  or ''}}</td>     
 
-				    <td class="td-status">
+				    <td class="td-status" style="text-align:center;vertical-align:middle;">
 				    	 <span class="label label-success radius">@if( $v->status == 1) 未付款 @elseif( $v->status == 2)未发货 @elseif( $v->status == 3)已发货 @elseif( $v->status == 4)交易完成已收货@endif</span>
 				     </td>
 				  	
 
 
-				     <td class="td-manage">
+				     <td class="td-manage" style="text-align:center;vertical-align:middle;">
 					
 						<i class="Hui-iconfont" id="abcc" onclick ="shows({{  $v->oid  or '' }});" >&#xe720;</i>
 							  

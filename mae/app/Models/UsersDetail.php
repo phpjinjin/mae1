@@ -10,5 +10,6 @@ class UsersDetail extends Model
     public $table = 'users_details';
     //前台用户详情表id
     public $primaryKey='udid';
+    
 
 }

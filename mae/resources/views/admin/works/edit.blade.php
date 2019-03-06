@@ -3,7 +3,7 @@
 
 <article class="page-container " style="float:left;width:80%;position: relative; top:50px">
 
-	<form action="/admin/works/{{ $works->wid }}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
+	<form action="/admin/works/{{ $works->woid }}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
 		  {{ csrf_field() }}
 		  {{ method_field('PUT') }}
 		<div class="row cl">
@@ -42,9 +42,9 @@
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 				<select class="select" size="1" name="wstatus" >
 					
-					<option value="0"  @if($works->wstatus == 0) selected @else '' @endif >投放</option>
+					<option value="1"  @if($works->wstatus == 1) selected @else '' @endif >投放</option>
 				
-					<option value="1" @if($works->wstatus == 1) selected @else '' @endif >下刊</option>
+					<option value="2" @if($works->wstatus == 2) selected @else '' @endif >下刊</option>
 					
 				</select>
 				</span> </div>

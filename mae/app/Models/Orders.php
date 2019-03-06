@@ -19,7 +19,7 @@ class Orders extends Model
     }
 
      // 订单主表(Orders)与用户表(Users)的关联:多对一
-    public function  user()
+    public function  usersss()
     {
     	return $this->belongsTo('App\Models\Users','uid');
 

@@ -9,11 +9,11 @@
   <meta name="keywords" content="HTML5,美观,简洁大气,响应式,第三方登录,网页模板" />
   <meta name="description" content="HTML5美观简洁大气响应式带第三方登录网页模板下载。鼠标经过登录按钮带紫色渐变炫酷动画效果。带有简单的表单验证功能。" /> 
 
-  <link rel="stylesheet" type="text/css" href="/r/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/r/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/r/fonts/iconic/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" type="text/css" href="/r/css/util.css">
-  <link rel="stylesheet" type="text/css" href="/r/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/hl/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/hl/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/hl/fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" type="text/css" href="/hl/css/util.css">
+  <link rel="stylesheet" type="text/css" href="/hl/css/main.css">
 </head>
 
 <body>

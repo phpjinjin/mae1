@@ -1,0 +1,6 @@
+hl  前台登陆
+
+o   home首页
+
+r   注册
+uploads  图片存放目录
