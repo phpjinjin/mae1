@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Goods;
-use App\Models\Link;
-use App\Models\Webs;
-use App\Models\Works;
 
-class HomeController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,17 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         //
-        $webs = Webs::get();
-        $status = $webs[0]->status;
-        
-        // dd($status);
-        if($status == 1){
-
-            return view('home.index.home');
-        }
-        // else{
-        //     return view('');
-        // }
+        return view('home.address.index');
     }
 
     /**
@@ -70,9 +56,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         //
+        return view('home.address.edit');
     }
 
     /**
@@ -85,6 +72,12 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // $add = address::find($id);
+        // $add->uid = $request->uid;
+        // $add->aname = $request->aname;
+        // $add->phone = $request->phone;
+        // $add->addres = $request->addres;
+        // $add->address = $request->address;
     }
 
     /**

@@ -20,13 +20,13 @@
   <body>
 
     <div class="login-boxtitle">
-      <a href="home/demo.html"><img alt="" src="/r/images/logo3.png" /></a>
+      <a href="home/demo.html"><img alt="" src="/images/logo.png" style="width: 150px" /></a>
     </div>
 
     <div class="res-banner">
       <div class="res-main">
         <div class="login-banner-bg"><span></span><img src="/r/images/big.jpg" /></div>
-        <div class="login-box">
+        <div class="login-box"> 
 
             <div class="am-tabs" id="doc-my-tabs">
               <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
