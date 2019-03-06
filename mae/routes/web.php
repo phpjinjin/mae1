@@ -102,7 +102,14 @@ Route::get('/admin/orders/orderr/{id}','Admin\OrdersController@orderr');
 Route::get('/admin/orders/orders/{id}','Admin\OrdersController@delete');
 //后台浏览订单发货
 Route::resource('/admin/orders','Admin\OrdersController');
-
+//个人中心首页
+Route::get('home/center','Home\CenterController@index');
+//个人中心订单页面
+Route::get('home/center/order','Home\CenterController@order');
+//取消订单
+Route::get('/home/center/delete/{id}','Home\CenterController@delete');
+// 文章路由
+Route::get('/home/article','Home\ArticleController@index');
 
 
 

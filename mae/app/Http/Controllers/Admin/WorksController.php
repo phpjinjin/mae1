@@ -104,7 +104,7 @@ class WorksController extends Controller
     public function show($id)
     {
         //找到传过来的wid
-        $data = DB::table('works')->where('wid',$id)->first();
+        $data = DB::table('works')->where('woid',$id)->first();
 
 
         return view('admin.works.show',['data'=>$data]);
@@ -117,10 +117,10 @@ class WorksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) 
     {
         //找到传值过来的id
-         $works = DB::table('works')->where('wid',$id)->first();
+         $works = DB::table('works')->where('woid',$id)->first();
 
         return view('admin.works.edit',['works'=>$works]);
     }
@@ -211,8 +211,8 @@ class WorksController extends Controller
         //找到指定表单传过来的id值
         $data =  Works::find($id);
         //判断表单传过来的id值找到指定的字段判断然后执行
-        if($data['wstatus'] == 0){
-            $data->wstatus = 1;
+        if($data['wstatus'] == 1){
+            $data->wstatus = 2;
             $res1 = $data->save();
 
 	         if($res1){
@@ -222,9 +222,9 @@ class WorksController extends Controller
 	                return back()->with('error','修改状态失败');
 	            }
 
-        }elseif($data['wstatus'] == 1){
+        }elseif($data['wstatus'] == 2){
 
-            $data->wstatus = 0;
+            $data->wstatus = 1;
 
         	$res1 =   $data->save();
 	         if($res1){

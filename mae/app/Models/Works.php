@@ -14,5 +14,7 @@ class Works extends Model
     //不验证时间
     public $timestamps = false; 
     
+    
+    
 
 }

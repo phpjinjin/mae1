@@ -39,13 +39,15 @@
         			
 				  <tr class="text-c">
 				    		
-				    <td>{{ $v->goods->gname  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->goods->gname  or ''}}</td>
 				    @foreach($v->goods->goodspic as $kk=>$vv)
-				    <td>{{ $vv->gpic  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">
+				    	<img src="{{ asset( 'uploads/gpic/'.$vv->gpic) }}">	
+				    </td>
 				    @endforeach
-				    <td>{{ $v->price  or ''}}</td>
-				    <td>{{ $v->cnt or ''}}</td>
-				    <td>￥{{$v->price * $v->cnt}}  </td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->price  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->cnt or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">￥{{$v->price * $v->cnt}}  </td>
 				    
 				  
 

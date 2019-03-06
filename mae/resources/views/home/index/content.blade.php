@@ -33,8 +33,11 @@
     
     
 <title>朝花夕拾</title>
+<<<<<<< HEAD
 
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
+=======
+>>>>>>> origin/wangfan
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -125,7 +128,12 @@
                         <div class="s_city_t"></div>
                         <div class="ss_list_c">
                             <ul>
+<<<<<<< HEAD
                                 <li><a href="/home/collect">我的收藏夹</a></li>
+=======
+                                <li><a href="#">我的收藏夹</a></li>
+                                <li><a href="#">我的收藏夹</a></li>
+>>>>>>> origin/wangfan
                             </ul>
                         </div>
                     </div>     
@@ -451,8 +459,12 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
         <ul class="menu_r">                                                                                                                                               
+<<<<<<< HEAD
 
             <li><a href="/home/index">首页</a></li>
+=======
+            <li><a href="Index.html">首页</a></li>
+>>>>>>> origin/wangfan
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -555,7 +567,11 @@
 </body>
 
 
+<<<<<<< HEAD
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
+=======
+
+>>>>>>> origin/wangfan
 </html>
