@@ -18,6 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         //
         //return 2;
         $webs = Webs::get();
@@ -25,12 +26,12 @@ class HomeController extends Controller
         
         // dd($status);
         if($status == 1){
-
             return view('home.index.home');
         }
         // else{
         //     return view('');
         // }
+
     }
 
     /**

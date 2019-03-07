@@ -198,10 +198,8 @@ Route::resource('/admin/goods','Admin\GoodsController');
 //轮播图管理
 Route::resource('/admin/slid','Admin\SlidController');
 
-
 //前台商品展示
 Route::resource('/home/goods','Home\GoodsController');
-
 
 //加入购物车
 Route::get('/home/carts/add/{cnt}/{gid}','Home\CartsController@add');
@@ -209,6 +207,8 @@ Route::get('/home/carts/add/{cnt}/{gid}','Home\CartsController@add');
 Route::get('/home/carts/jian/{cid}','Home\CartsController@jian');
 //加商品数量
 Route::get('/home/carts/jia/{cid}','Home\CartsController@jia');
+//删除购物车条目
+Route::get('/home/carts/dele/{id}','Home\CartsController@dele');
 
 Route::resource('/home/carts','Home\CartsController');
 

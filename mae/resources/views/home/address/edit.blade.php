@@ -13,6 +13,12 @@
         layer.msg(' 取消收藏失败');
     </script>
 @endif
+@section('menu')
+<script type="text/javascript" src="/o/js/n_nav.js"></script>
+@endsection
+@section('none')
+<div class="leftNav none">
+@endsection
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">

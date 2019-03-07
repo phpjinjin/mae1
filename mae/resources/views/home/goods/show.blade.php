@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/o/js/MagicZoom.js"></script>
 <script type="text/javascript" src="/o/js/num.js">
     	var jq = jQuery.noConflict();
-    </script>
+</script>
 <script src="/o/js/ShopShow.js"></script>
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
 @endsection
