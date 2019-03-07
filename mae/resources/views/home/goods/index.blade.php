@@ -1,9 +1,9 @@
 @extends('home.index.content')
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/wangfan
 @section('content')
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
+
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
@@ -116,8 +116,8 @@
                         </div>
                         <div class="name"><a href="#">{{ $v->gname }}</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a onclick="carts({{ $v->gid }})" class="j_car">加入购物车</a>
+                        	<a id="shou{{$v->gid}}" onclick="shou({{ $v->gid }})" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     @endforeach
@@ -149,4 +149,18 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function shou(gid){
+            
+            var url = '/home/collect/add/'+gid;
+            $.get(url , function(res){
+                if(res){
+                    layer.msg('操作成功',{icon: 1});
+                    $('#shou'+gid).text(res);
+                }else{
+                    layer.msg(res,{icon: 2});
+                }
+            });
+        }
+    </script>
 @endsection

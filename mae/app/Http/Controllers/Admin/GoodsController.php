@@ -9,6 +9,7 @@ use App\Models\Goods;
 use App\Models\Cate;
 use App\Models\GoodsPic;
 use App\Models\Goodval;
+use App\Models\Goods_collect;
 use DB;
 
 class GoodsController extends Controller
@@ -37,11 +38,7 @@ class GoodsController extends Controller
 
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-<<<<<<< HEAD
-        foreach ($data as $k=>$v){
-=======
        foreach ($data as $k=>$v){
->>>>>>> origin/wangfan
            $v->tid = $v->goodstype->gtname;
         }
         return view('admin.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);

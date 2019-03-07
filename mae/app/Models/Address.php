@@ -15,6 +15,7 @@ class Address extends Model
     public function  useraddress()
     {
     	return $this->belongsTo('App\Models\Users','uid');
+    }
 
 
 

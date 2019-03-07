@@ -160,10 +160,12 @@ Route::resource('admin/link','Admin\linkcontroller');
 // 前台首页路由
 Route::resource('home/index','Home\HomeController');
 // 前台收藏页
+Route::get('home/collect/add/{gid}','Home\CollectController@add');
 Route::get('home/collect/delete/{id}','Home\CollectController@delete');
+Route::get('home/collect/{id}','Home\CollectController@store');
 Route::resource('home/collect','Home\CollectController');
 // 前台收货地址
-Route::get('home/address/edit','Home\AddressController@edit');
+Route::get('home/address/edit/{id}','Home\AddressController@edit');
 Route::get('home/address/update/{id}','Home\AddressController@update');
 Route::get('home/address/delete/{id}','Home\AddressController@delete');
 Route::resource('home/address','Home\AddressController');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Models\Address;
 
 class AddressController extends Controller
 {
@@ -26,6 +28,7 @@ class AddressController extends Controller
     public function create()
     {
         //
+        return view('home.address.create');
     }
 
     /**
@@ -56,10 +59,11 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         //
-        return view('home.address.edit');
+        $data = Address::find($id);
+        return view('home.address.edit',['data'=>$data]);
     }
 
     /**
@@ -72,12 +76,23 @@ class AddressController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // DB::beginTransaction();
         // $add = address::find($id);
         // $add->uid = $request->uid;
         // $add->aname = $request->aname;
         // $add->phone = $request->phone;
+        // $add->adress = $request->adress;
         // $add->addres = $request->addres;
-        // $add->address = $request->address;
+        // $add->code = $request->code;
+        // $add->region = $request->region;
+        // $res = $add->save();
+        // if($res){
+        //     DB::commit();
+        //     return redirect('admin/address')->with('xgcg','成功');
+        // }else{
+        //     DB::rollBack();
+        //     return back()->with('xgerror','失败');
+        // }
     }
 
     /**
