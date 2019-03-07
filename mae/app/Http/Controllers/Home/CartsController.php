@@ -147,4 +147,22 @@ class CartsController extends Controller
     {
         //
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function dele($id)
+    {
+        //删除订单
+        $res = Carts::destroy($id);
+        if($res){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
 }

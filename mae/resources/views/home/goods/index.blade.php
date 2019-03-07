@@ -1,8 +1,9 @@
-@extends('home.index.head')
+@extends('home.index.content')
 
 @section('content')
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
 @endsection
 @section('none')
 <div class="leftNav none">
@@ -113,12 +114,29 @@
                         <div class="name"><a href="#">{{ $v->gname }}</a></div>
                         <div class="carbg">
                         	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
+                            <a onclick="carts({{ $v->gid }})" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     @endforeach
                 </ul>
-                
+                <script type="text/javascript">
+                    function carts(gid){
+                        var cnt = 1;
+                        var url = '/home/carts/add/'+cnt+'/'+gid;
+                        $.get(url , function(res){
+                            if(res) {
+                                layer.alert('已加入购物车', {
+                                  icon: 1,
+                                  skin: 'layer-ext-moon' 
+                                })
+                            } else {
+                                layer.msg('加入购物车失败',{icon: 1});
+                            }
+                        });
+                    }
+                    
+                    
+                </script>
                 <div class="pages">
                 	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
                 </div>

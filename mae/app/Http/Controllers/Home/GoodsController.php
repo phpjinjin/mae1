@@ -18,7 +18,7 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',5);
+        $count = $request->input('count',15);
         $search = $request->input('search','');
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
