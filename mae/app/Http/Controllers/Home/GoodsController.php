@@ -22,7 +22,7 @@ class GoodsController extends Controller
         $search = $request->input('search','');
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-
+        
         return view('home.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }
 

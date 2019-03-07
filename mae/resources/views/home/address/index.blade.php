@@ -13,6 +13,12 @@
         layer.msg(' 取消收藏失败');
     </script>
 @endif
+@section('menu')
+<script type="text/javascript" src="/o/js/n_nav.js"></script>
+@endsection
+@section('none')
+<div class="leftNav none">
+@endsection
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
@@ -66,11 +72,11 @@
                 
                 <p align="right">
                     <a href="#" style="color:#ff4e00;">设为默认</a>&nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/home/address/edit" style="color:#ff4e00;">编辑</a>&nbsp; &nbsp; &nbsp;
+                    <a href="/home/address/edit/1" style="color:#ff4e00;">编辑</a>&nbsp; &nbsp; &nbsp;
                 </p>
             </div>
             <div class="mem_tit">
-                <a href="#"><img src="/o/images/add_ad.gif" /></a>
+                <a href="/home/address/create"><img src="/o/images/add_ad.gif" /></a>
             </div>
         </div>
     </div>

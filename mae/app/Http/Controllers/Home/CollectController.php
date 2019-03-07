@@ -10,13 +10,43 @@ use DB;
 class CollectController extends Controller
 {
     /**
+     * 加入收藏
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function add($gid)
+    {
+        $res = Goods_collect::where('gid',$gid)->first();
+        
+        if(!count($res)){
+            $coll = new Goods_collect;
+            $coll->gid = $gid;
+            $coll->uid = 9;
+            $time = date('Y-m-d',time());
+            $coll->collect_time = $time;
+            if($coll->save()){
+                return view('home.collect.cheng',['coll'=>'取消']);
+            }else{
+                return view('home.collect.shi',['coll'=>'收藏失败'] );
+            }
+        }else{
+            Goods_collect::where('gid',$gid)->delete();
+            return view('home.collect.shi',['coll'=>'收藏']);
+        }
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        // $data = Goods_collect::all();
+        // dd($request);
         return view('home.collect.index');
     }
 
@@ -36,25 +66,27 @@ class CollectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         //
-        // DB::beginTransaction();
-        // $collect = new Goods_collect;
+        DB::beginTransaction();
+        $collect = new Goods_collect;
         // $collect->uid = $request->uid;
-        // $collect->gid = $request->gid;
-        // $time = date('Y-m-d',time());
-        // $collect->collect_time = $time;
 
-        // $res = $link->save();
+        $collect->gid = $id;
+        
+        $time = date('Y-m-d',time());
+        $collect->collect_time = $time;
 
-        // if($res){
-        //     DB::commit();
-        //     return redirect('Home/collect')->with('success','添加成功');
-        // }else{
-        //     DB::rollBack();
-        //     return back()->with('error','添加失败');
-        // }
+        $res = $collect->save();
+
+        if($res){
+            DB::commit();
+            return back()->with('sccg','添加成功');
+        }else{
+            DB::rollBack();
+            return back()->with('scerror','添加失败');
+        }
     }
 
     /**
@@ -105,14 +137,14 @@ class CollectController extends Controller
     public function delete($id)
     {
         //
-        // $del = Goods_collect::destroy($id);
-        // //判断是否正常
-        // if($del){
-        //     return redirect($_SERVER['HTTP_REFERER'])->with('qxcg','删除成功');
-        // }else{
-        //    //异常弹回
-        //     return redirect($_SERVER['HTTP_REFERER'])->with('qxerror','删除失败');
-        // }
+        $del = Goods_collect::destroy($id);
+        //判断是否正常
+        if($del){
+            return redirect($_SERVER['HTTP_REFERER'])->with('qxcg','删除成功');
+        }else{
+           //异常弹回
+            return redirect($_SERVER['HTTP_REFERER'])->with('qxerror','删除失败');
+        }
     }
     
 }

@@ -13,4 +13,10 @@ class Goods_collect extends Model
     public $primaryKey='gcid';
     //不验证时间
     public $timestamps = false; 
+
+    //建立对商品的关联 一对一
+    public function goodsval()
+    {
+        return $this->hasOne('App\Models\Goods','gid');
+    }
 }
