@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Goods;
 use App\Models\GoodsPic;
 use App\Models\Goodval;
+use App\Models\Cate;
 
 
 class GoodsController extends Controller
@@ -22,7 +23,13 @@ class GoodsController extends Controller
         $search = $request->input('search','');
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-
+        $pid_data = Cate::where('pid',0)->get(); //一级分类  用途 花材
+        // foreach($pid_data as $k=>$v){
+        //     $v['sub']=>Cate::where('pid',$v->id)->get(); //二级分类 鲜花类别
+        //     foreach ($v['sub'] as $kk=>$vv){
+        //         $vv['sub'] = Cate::where('pid',$vv->id)->get(); //三级类
+        //     }
+        // }
         return view('home.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }
 
