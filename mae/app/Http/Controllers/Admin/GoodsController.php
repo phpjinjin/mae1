@@ -34,9 +34,14 @@ class GoodsController extends Controller
     {
         $count = $request->input('count',5);
         $search = $request->input('search','');
+
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
+<<<<<<< HEAD
         foreach ($data as $k=>$v){
+=======
+       foreach ($data as $k=>$v){
+>>>>>>> origin/wangfan
            $v->tid = $v->goodstype->gtname;
         }
         return view('admin.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);

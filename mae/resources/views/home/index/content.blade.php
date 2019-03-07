@@ -28,12 +28,18 @@
     <script type="text/javascript" src="/o/js/tban.js"></script>
     
     <script type="text/javascript" src="/o/js/lrscroll_1.js"></script>
+<<<<<<< HEAD
     <!-- 引入layui -->
     <script src="/d/layui-v2.4.5/layui/layui.js"></script>
     <script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
     @yield('menu')
     
 <title>朝花夕拾</title>
+
+    <script type="text/javascript" src="/o/js/n_nav.js"></script>
+    @section('menu')
+    @show
+<link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -449,9 +455,10 @@
             </div>
         </div>  
         <!--End 商品分类详情 End-->                                                     
-        <ul class="menu_r">                                                                                                                                               
+
+        <ul class="menu_r">                                                    
             <li><a href="/home/index">首页</a></li>
-            <li><a href="/home/goods">商品</a></li>
+            <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
             <li><a href="SuitDress.html">女装</a></li>
@@ -543,7 +550,7 @@
     </div>    
     <div class="btmbg">
         <div class="btm">
-            备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+            备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright ? 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
             <img src="/o/images/b_1.gif" width="98" height="33" /><img src="/o/images/b_2.gif" width="98" height="33" /><img src="/o/images/b_3.gif" width="98" height="33" /><img src="/o/images/b_4.gif" width="98" height="33" /><img src="/o/images/b_5.gif" width="98" height="33" /><img src="/o/images/b_6.gif" width="98" height="33" />
         </div>      
     </div>
@@ -551,8 +558,6 @@
 </div>
 
 </body>
-
-
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->

@@ -1,5 +1,8 @@
 @extends('home.index.content')
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/wangfan
 @section('content')
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
@@ -107,7 +110,7 @@
                 <ul class="cate_list">
                 	@foreach($goods as $k=>$v)
                 	<li>
-                    	<div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('/uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="210" height="185" /></a></div>
                         <div class="price">
                             <font>￥<span>{{ $v->price }}</span></font> &nbsp;&nbsp;&nbsp;&nbsp; 销量:{{ $v->salecnt }}
                         </div>
