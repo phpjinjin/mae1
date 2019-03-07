@@ -15,6 +15,11 @@ class Works extends Model
     public $timestamps = false; 
     
     
+    // 建立与商品一对一关系
+     public function goodss()
+    {
+        return $this->hasOne('App\Models\Goods','gid');
+    }
     
 
 }

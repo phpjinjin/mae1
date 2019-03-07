@@ -64,7 +64,7 @@ a {
 .product-item-info {
     position: absolute;
     top: 720px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     top: calc(100% - 32px);
     left: 50%;
     margin-left: -230px;
@@ -81,10 +81,9 @@ a {
 }
 </style>
 
-
 @foreach($works as $k=>$v)
-<div  style="float:left;margin-left:10%;margin-top: 10px;">
-	<a class="product-item" href="/product/9012322.html" target="_blank">
+<div  style="float:left;margin-left:10%;margin-top: 10px;margin-bottom: 40px">
+	<a class="product-item" href="/home/article/show/{{ $v->gid }}" target="_blank">
 	    <div class="product-item-pic" style="border:1px solid #EDEDF0"><img src="{{asset('/uploads/works/'.$v->wpic)}}"></div>
 	    <div class="product-item-info">
 	        <div class="product-item-info__hd" >
@@ -94,12 +93,16 @@ a {
 	            </div>
 	            <div class="product-info-right">
 	                <p>RMB</p>
-	                <div class="product-info-price" data-id="9012322">639</div>
+
+
+	                <div class="product-info-price" data-id="9012322">{{ $v->price}}</div>
+
+ 
 	            </div>
 	        </div>
 	        <div class="product-item-info__desc" style="background-color:#EAEAEA">{!! $v->wcontent !!}</div>
 	    </div>
 	</a> 
-</div>               
+</div> 
 @endforeach
 @endsection

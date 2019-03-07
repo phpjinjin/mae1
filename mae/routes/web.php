@@ -110,6 +110,7 @@ Route::get('home/center/order','Home\CenterController@order');
 Route::get('/home/center/delete/{id}','Home\CenterController@delete');
 // 文章路由
 Route::get('/home/article','Home\ArticleController@index');
+Route::get('/home/article/show/{id}','Home\ArticleController@show');
 
 
 

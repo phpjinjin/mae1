@@ -30,14 +30,14 @@
     <script type="text/javascript" src="/o/js/lrscroll_1.js"></script>
 
     <script type="text/javascript" src="/o/js/n_nav.js"></script>
-    
+    @section('menu')
+    @show
     
 <title>朝花夕拾</title>
-<<<<<<< HEAD
+
 
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
-=======
->>>>>>> origin/wangfan
+
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -128,12 +128,7 @@
                         <div class="s_city_t"></div>
                         <div class="ss_list_c">
                             <ul>
-<<<<<<< HEAD
                                 <li><a href="/home/collect">我的收藏夹</a></li>
-=======
-                                <li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
->>>>>>> origin/wangfan
                             </ul>
                         </div>
                     </div>     
@@ -458,13 +453,9 @@
             </div>
         </div>  
         <!--End 商品分类详情 End-->                                                     
-        <ul class="menu_r">                                                                                                                                               
-<<<<<<< HEAD
+        <ul class="menu_r">                                                                              
 
             <li><a href="/home/index">首页</a></li>
-=======
-            <li><a href="Index.html">首页</a></li>
->>>>>>> origin/wangfan
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -557,7 +548,7 @@
     </div>    
     <div class="btmbg">
         <div class="btm">
-            备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+            备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright ? 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
             <img src="/o/images/b_1.gif" width="98" height="33" /><img src="/o/images/b_2.gif" width="98" height="33" /><img src="/o/images/b_3.gif" width="98" height="33" /><img src="/o/images/b_4.gif" width="98" height="33" /><img src="/o/images/b_5.gif" width="98" height="33" /><img src="/o/images/b_6.gif" width="98" height="33" />
         </div>      
     </div>
@@ -567,11 +558,4 @@
 </body>
 
 
-<<<<<<< HEAD
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
-=======
-
->>>>>>> origin/wangfan
 </html>
