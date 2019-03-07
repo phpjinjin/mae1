@@ -14,9 +14,26 @@
     <link href="/r/css/dlstyle.css" rel="stylesheet" type="text/css">
     <script src="/r/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
     <script src="/r/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-  </head>
 
+    <script src="/d/layui-v2.4.5/layui/layui.js"></script>
+    <script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
+  </head>
+  
   <body>
+   <div id="mws-container" class="clearfix">
+            <!-- 显示错误消息 开始 -->
+            @if (session('success'))
+                <div class="mws-form-message success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="mws-form-message error">
+                    {{ session('error') }}
+                </div>
+            @endif
+             <!-- 显示错误消息 结束 -->
 
     <div class="login-boxtitle">
 
@@ -29,12 +46,21 @@
 
         <div class="login-banner-bg"><span></span><img src="/r/images/big.jpg" /></div>
         <div class="login-box"> 
+
             <div class="am-tabs" id="doc-my-tabs">
               <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
                 <li class="am-active"><a href="">邮箱注册</a></li>
                 <li><a href="">手机号注册</a></li>
               </ul>
-
+              @if (count($errors) > 0)
+                                    <div class="alert alert-danger" style="background: #E8E8E3;">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li style="list-style:none;color: orangered;">{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
               <div class="am-tabs-bd">
                 <div class="am-tab-panel am-active">
                   <form method="post" action="/home/register">
@@ -66,7 +92,8 @@
                 </div>
 
                 <div class="am-tab-panel">
-                  <form method="post">
+                  <form method="post" action="/home/register/phone">
+                    {{ csrf_field() }}
                     <div class="user-phone">
                         <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
                         <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
@@ -146,13 +173,13 @@
                       // console.log(text);
                       if(text == '获取'){
                           //发送ajax 请求后台
-                          $.get('/home/register/sendPhone/',{'phone':phone},function(msg){
-                              if(msg == 'ok'){
+                          $.get('/home/register/sendPhone/',{'phone':phone},function(data){
+                              if(data.code == 0){
                                   editCon();
                               }else{
-
+                                  alert(data.msg);
                               }
-                          },'html');
+                          },'json');
                         }else{
                           return false;
                         }
@@ -192,3 +219,4 @@
   </body>
 
 </html>
+<script type="text/javascript"></script>

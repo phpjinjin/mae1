@@ -5,9 +5,12 @@
 */
 header('content-type:text/html;charset=utf-8');
   
-$sendUrl = 'http://v.juhe.cn/sms/send'; //短信接口的URL
+$redis = new Redis;
+$redis->connect('localhost',6379);
+
 $phone = $_GET['phone'];   //手机号
 $phone_code = rand(1000,9999);          //验证码
+$sendUrl = 'http://v.juhe.cn/sms/send'; //短信接口的URL
 $smsConf = array(
     'key'   => '369be4a1024be260416a5cb61078c117', //您申请的APPKEY
     'mobile'    => $phone, //接受短信的用户手机号码
@@ -17,21 +20,36 @@ $smsConf = array(
  
 $content = juhecurl($sendUrl,$smsConf,1); //请求发送短信
  
-// if($content){
-//     $result = json_decode($content,true);
-//     $error_code = $result['error_code'];
-//     if($error_code == 0){
-//         //状态为0，说明短信发送成功
-//         echo "短信发送成功,短信ID：".$result['result']['sid'];
-//     }else{
-//         //状态非0，说明失败
-//         $msg = $result['reason'];
-//         echo "短信发送失败(".$error_code.")：".$msg;
-//     }
-// }else{
-//     //返回内容异常，以下可根据业务逻辑自行修改
-//     echo "请求发送短信失败";
-// }
+if($content){
+    $result = json_decode($content,true);    //转换成数组
+    $error_code = $result['error_code'];
+    if($error_code == 0){
+    	//将值放到redis中
+    	$redis->setex('code_phone',1800,$phone_code);
+    	//状态为0，说明短信发送成功
+    	$arr = [
+    		'code'=>0,
+    		'msg'=>"短信发送成功,短信ID：".$result['result']['sid'],
+    	];
+        echo json_encode($arr);    
+    }else{
+        //状态非0，说明失败
+        $msg = $result['reason'];
+        $arr = [
+        	'code'=>$error_code,
+        	'msg'=>"短信发送失败(".$error_code.")：".$msg,
+        ];
+        echo json_encode($arr);
+    }
+}else{
+    //返回内容异常，以下可根据业务逻辑自行修改
+    
+    $arr = [
+    	'code'=>'',
+    	'msg'=>"请求发送短信失败",
+    ];
+    echo json_encode($arr);
+}
  
 /**
  * 请求接口返回内容

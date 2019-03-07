@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Users;
 use App\Models\UsersDetail;
 use App\Http\Requests\HomeUsersRequest;
+use App\Http\Requests\PhoneRequest;
 use Hash;
 use Mail;
 use DB;
+use Redis;
 class RegisterController extends Controller
 {
     /**
@@ -47,13 +49,24 @@ class RegisterController extends Controller
         DB::beginTransaction();
         //接收数据
         $data = $request->except('_token');
-        $users = new Users;
-        $users->account = $data['email'];
-        $users->password = Hash::make($data['password']);
-        //将密码加密后存至数据表users中
-        $res1 = $users->save();
-        //接收返回的id号
-        $uid = $users->uid;
+
+        $users = Users::get();
+        $arr =[];
+        foreach ($users as $k=>$v){
+            $arr[]= $v->account;
+        }
+        if(in_array($data['email'],$arr)){
+            dd('该邮箱已创建账号,请直接登录');
+        }else{
+            $users = new Users;
+            $users->account = $data['email'];
+            $users->password = Hash::make($data['password']);
+            //将密码加密后存至数据表users中
+            $res1 = $users->save();
+            //接收返回的id号
+            $uid = $users->uid;
+        }
+       
         
         $usersdetail = new UsersDetail;
         $usersdetail->user_id = $uid;
@@ -150,8 +163,60 @@ class RegisterController extends Controller
     {
         //
     }
+
+    /**
+     * 加载手机注册api文件
+     * @return [type] [description]
+     */
     public function sendphone()
     {
         return view('home.register.sendPhone');
     }
-}
+
+    /**
+     * 手机注册表单提交
+     * @return [type] [description]
+     */
+    public function phone(PhoneRequest $request)
+    {   //开启事物
+        DB::beginTransaction(); 
+        //接收数据 
+        $data = $request->only(['phone','password','repassword','code']);
+        //判断验证码不能为空
+        if($data['code'] == ''){
+            return back()->with('error','验证不能为空');
+        }
+        //获取redis验证码并进行判断
+        $redis = new Redis;
+        $redis->connect('localhost',6379);
+        $code_phone = $redis->get('code_phone');
+        if($request->code != $code_phone){
+            return back()->with('error','验证码错误');
+        }
+        $users = Users::get();
+        $arr =[];
+        foreach ($users as $k=>$v){
+            $arr[]= $v->account;
+        }
+        if(in_array($data['phone'],$arr)){
+            return back()->with('error','该手机号已被注册,请直接登录');
+        }else{
+            $users = new Users;
+            $users->account = $data['phone'];
+            $users->password = Hash::make($data['password']);
+            $res1 = $users->save();
+            $uid = $users->uid;
+        }
+        $usersdetail = new UsersDetail;
+        $usersdetail->user_id = $uid;
+        $usersdetail->phone = $data['phone'];
+        $res2 = $usersdetail->save();
+        if($res1 && $res2){
+            DB::commit();
+            return redirect('/home/login')->with('success','注册成功');
+        }else{
+            DB::rollBack();
+            return back()->with('error','注册失败');
+        }
+    }
+}    
