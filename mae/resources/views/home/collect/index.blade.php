@@ -46,16 +46,18 @@
             </div>
             <div class="fresh_mid" style="width: 979px">
 	           	<ul>
-	                <li onmouseenter="test(this)" onmouseleave="test2(this)">
-	                    <div class="name"><a href="#">新鲜美味  进口美食</a>&nbsp;
-	                    	<a href="/home/collect/delete/2" class="dj" style="background: #aaa" hidden >
+                    @foreach($goods as $k=>$v)
+	                <li onmouseenter="test({{$v->gid}})" onmouseleave="test2({{$v->gid}})">
+	                    <div class="name"><a href="#">{{$v->gname}}</a>
+	                    	<a href="/home/collect/delete/{{$v->gid}}" id="{{$v->gid}}" style="background: #aaa;margin-right: 10px" hidden >
 	                    		&nbsp;取消收藏&nbsp;</a>
 	                    </div>
 	                    <div class="price">
-	                        <font>￥<span>198.00</span></font> &nbsp; 26R
+	                        <font>￥<span>{{$v->price}}</span></font>
 	                    </div>
-	                    <div class="img"><a href="#"><img src="/o/images/fre_1.jpg" width="185" height="155" /></a></div>
+	                    <div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('/uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="185" height="155" /></a></div>
 	                </li>
+                    @endforeach
 	            </ul>
 
         	</div>
@@ -66,11 +68,11 @@
     </div>
 </div>
 <script type="text/javascript">
-	function test(){
-		$('a[class=dj]').removeAttr('hidden');
+	function test(gid){
+		$('#'+gid).removeAttr('hidden');
 	}
-	function test2(){
-		$('a[class=dj]').attr('hidden','true');
+	function test2(gid){
+		$('#'+gid).attr('hidden','true');
 	}
 </script>
 @endsection

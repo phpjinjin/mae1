@@ -1,7 +1,6 @@
 @extends('home.index.content')
 @section('content')
 @section('menu')
-<script type="text/javascript" src="/o/js/n_nav.js"></script>
 @endsection
 @section('none')
 <div class="leftNav">

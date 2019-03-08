@@ -17,6 +17,8 @@ class AddressController extends Controller
     public function index()
     {
         //
+        // $data = Address::all();
+
         return view('home.address.index');
     }
 
@@ -40,6 +42,21 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         //
+        DB::beginTransaction();
+        $address = new Address;
+        // $collect->uid = $request->uid;
+
+        $address->gid = $id;
+
+        $res = $address->save();
+
+        if($res){
+            DB::commit();
+            return back()->with('sccg','添加成功');
+        }else{
+            DB::rollBack();
+            return back()->with('scerror','添加失败');
+        }
     }
 
     /**
