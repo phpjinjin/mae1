@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Users;
+use Hash;
 class LoginController extends Controller
 {
     /**
@@ -35,8 +36,19 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        //接收数据
+        $data = $request->only(['account','password']);
+        $user = users::where('account',$data['account'])->first();
+        if(!$user){           
+            return redirect('/home/login')->with('error','账号错误,请重新输入');
+            }   
+        if(Hash::check($data['password'],$user->password)){
+            session(['login'=>true,'id'=>$user->uid,'account'=>$data['account']]);
+            // echo session(['login','id']);
+            return redirect('/home/index')->with('success','登录成功');   
+       } 
+            return redirect('/home/login')->with('error','密码错误,请重新输入'); 
     }
 
     /**

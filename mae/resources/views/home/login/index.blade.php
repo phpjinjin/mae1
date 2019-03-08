@@ -3,12 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
+  <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>HTML5美观简洁大气响应式带第三方登录网页模板</title>
-  <meta name="keywords" content="HTML5,美观,简洁大气,响应式,第三方登录,网页模板" />
-  <meta name="description" content="HTML5美观简洁大气响应式带第三方登录网页模板下载。鼠标经过登录按钮带紫色渐变炫酷动画效果。带有简单的表单验证功能。" /> 
-
+  <title>朝花夕拾</title>
   <link rel="stylesheet" type="text/css" href="/hl/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/hl/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/hl/fonts/iconic/css/material-design-iconic-font.min.css">
@@ -20,18 +18,32 @@
   <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-        <form class="login100-form validate-form">
-          <span class="login100-form-title p-b-49">登录</span>
+        <form class="login100-form validate-form" action="/home/login" method="post">
+          {{ csrf_field() }}
 
+          <span class="login100-form-title p-b-49">登录</span>
+          <!-- 显示错误消息 开始 -->
+            @if (session('success'))
+                <div class="mws-form-message success" style="background: #E8E8E3;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="mws-form-message error" style="background: orangered;">
+                    {{ session('error') }} 
+                </div>
+            @endif
+             <!-- 显示错误消息 结束 -->
           <div class="wrap-input100 validate-input m-b-23" data-validate="请输入用户名">
-            <span class="label-input100">用户名</span>
-            <input class="input100" type="text" name="username" placeholder="请输入用户名" autocomplete="off">
+            <span class="label-input100">账号</span>
+            <input class="input100" type="text" name="account" placeholder="请输入用户手机号或者邮箱" autocomplete="off">
             <span class="focus-input100" data-symbol="&#xf206;"></span>
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="请输入密码">
             <span class="label-input100">密码</span>
-            <input class="input100" type="password" name="pass" placeholder="请输入密码">
+            <input class="input100" type="password" name="password" placeholder="请输入密码">
             <span class="focus-input100" data-symbol="&#xf190;"></span>
           </div>
 

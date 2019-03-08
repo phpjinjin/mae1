@@ -119,7 +119,12 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-            <span class="fl">你好，请<a href="/home/login">登录/免费注册</a>&nbsp;|&nbsp;<a href="#">个人中心</a>&nbsp;|</span>
+            <span class="fl">你好
+            @if(session('login') == null)<a href="/home/login">，请登录/免费注册
+            @elseif(  session('login') == true) <a href="/home/center">  {{ session('account') }}
+            @endif
+           
+            </a>&nbsp;|&nbsp;<a href="#">个人中心</a>&nbsp;|</span>
             <span class="ss">
                 <div class="ss_list">
                     收藏夹
