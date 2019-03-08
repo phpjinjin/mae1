@@ -119,4 +119,10 @@ class GoodsController extends Controller
     {
         //
     }
+
+
+    public function desy($id)
+    {
+        //
+    }
 }
