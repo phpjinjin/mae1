@@ -8,6 +8,8 @@ use App\Models\Goods;
 use App\Models\Link;
 use App\Models\Webs;
 use App\Models\Works;
+use App\Models\Slid;
+
 
 class HomeController extends Controller
 {
@@ -18,6 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //获取轮播图信息
+        $slid = Slid::get();
 
         //
         //return 2;
@@ -26,7 +30,7 @@ class HomeController extends Controller
         
         // dd($status);
         if($status == 1){
-            return view('home.index.home');
+            return view('home.index.home',['slid'=>$slid]);
         }
         // else{
         //     return view('');

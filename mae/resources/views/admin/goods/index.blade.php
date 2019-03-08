@@ -58,7 +58,6 @@
 					<td class="sorting_1">{{ $v->gid }}</td>
 					<td style="width:20px">{{ $v->gname }}</td>
 					<td>{{ $v->tid }}</td>
-					
 					<td>{{ $v->price }} ¥</td>
 					<td><a href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')"><img class="img-thumbnail" src="{{ asset('uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="77" height="77"></a></td>
 					<td class="text-c">{{ $v->color }}</td>
@@ -79,6 +78,7 @@
 			</tbody>
 		</table>
 		<div style="float:right;">{{ $goods->appends($request)->links() }}</div>
+		
 	</div>
 </div>
 

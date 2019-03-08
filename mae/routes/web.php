@@ -196,6 +196,7 @@ Route::get('/admin/goodval/dele/{id}','Admin\GoodvalController@dele');
 Route::resource('/admin/goodval','Admin\GoodvalController');
 
 //商品管理
+
 Route::get('/admin/goods/dele/{id}','Admin\GoodsController@dele');
 Route::resource('/admin/goods','Admin\GoodsController');
 
@@ -203,6 +204,7 @@ Route::resource('/admin/goods','Admin\GoodsController');
 Route::resource('/admin/slid','Admin\SlidController');
 
 //前台商品展示
+Route::get('/home/goods/catetype/{tid}','Home\GoodsController@catetype');
 Route::resource('/home/goods','Home\GoodsController');
 
 //加入购物车
@@ -213,6 +215,6 @@ Route::get('/home/carts/jian/{cid}','Home\CartsController@jian');
 Route::get('/home/carts/jia/{cid}','Home\CartsController@jia');
 //删除购物车条目
 Route::get('/home/carts/dele/{id}','Home\CartsController@dele');
-
+//购物车
 Route::resource('/home/carts','Home\CartsController');
 

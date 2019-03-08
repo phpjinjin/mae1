@@ -31,7 +31,21 @@
     <!-- 引入layui -->
     <script src="/d/layui-v2.4.5/layui/layui.js"></script>
     <script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
-    @yield('menu')  
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    @yield('menu') 
+    <style type="text/css">
+        #butt:hover{
+            color:#D97593;
+            font-weight:bold;
+        }
+        #look{
+            text-decoration:none;
+        }
+        #look:hover{
+            color:#FF4466;
+            font-weight:bold;
+        }
+    </style>
 <title>朝花夕拾</title>
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
@@ -172,42 +186,37 @@
 <div class="top">
     <div class="logo"><a href="/home/index"><img src="/o/images/logo4.png" /></a></div>
     <div class="search">
-        <form>
-            <input type="text" value="" class="s_ipt" />
+        <form action="/home/goods" method="get">
+            <input type="text" value="" class="s_ipt" placeholder="请输入商品关键字" name="search"/>
             <input type="submit" value="搜索" class="s_btn" />
         </form>                      
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
     <div class="i_car">
-        <div class="car_t"><a href="/home/carts">购物车</a> [ <span>3</span> ]</div>
+        <div class="car_t"><a href="/home/carts">购物车</a> [ <span style="color:#FF4466;">{{ $carts_count->tiao }}</span> ]</div>
         <div class="car_bg">
             <!--Begin 购物车未登录 Begin-->
-            <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            <div class="un_login">还未登录！<a href="Login.html" style="color:#FF4466;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
+            <ul class="cars" style="height:250px;">
+                @foreach($carts_count as $k=>$v)
                 <li>
-                    <div class="img"><a href="#"><img src="/o/images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
+                    <div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('uploads/gpic/'.$v->cart_good[0]->goodspic[0]->gpic) }}" width="58" height="58" /></a></div>
+                    <div class="name"><a href="/home/goods/{{ $v->gid }}">{{ $v->cart_good[0]->gname }}</a></div>
+                    <div class="price"><font color="#ff4e00"></font>X{{ $v->cnt }}</div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
+                @endforeach
+
             </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
+            <div class="price_sum"><a href="/home/carts" id="look">......查看更多</a></div>
+            <div class="price_sum">共计&nbsp; <font color="#FF4466">￥</font><span style="color:#FF4466;">{{ $carts_count->sum }}</span></div>
+            <div class="price_a" style="background:#FF4466;"><a href="/home/carts">去购物车结算</a></div>
             <!--End 购物车已登录 End-->
               </div>
     </div>
 </div>
+
 <!--End Header End--> 
 <!--Begin Menu Begin-->
 <div class="menu_bg">
@@ -216,27 +225,39 @@
         <div class="nav">
             <div class="nav_t">全部商品分类</div>
             @yield('none')
-                <ul>      
+                <ul>
+                    <a href="" hidden>{{ $num = 0 }}</a>
+                    @foreach($cate_data as $k=>$v)
                     <li>
+
                         <div class="fj">
                             <span class="n_img"><span></span><img src="/o/images/nav1.png" /></span>
-                            <span class="fl">进口食品、生鲜</span>
+                            <span class="fl">{{ $v->gtname }}</span>
                         </div>
-                        <div class="zj">
+                        
+                        <div class="zj" style="top:{{ $num  }}px;">
+                            @foreach($v['sub'] as $kk=>$vv)
                             <div class="zj_l">
                                 <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
+                                    <h2>{{ $vv->gtname }}</h2>
+                                    @foreach($vv['sub'] as $kkk=>$vvv)
+                                    <form action="/home/goods" method="get" style="display:inline-block;">
+                                        <input type="hidden" name="tid" value="{{ $vvv->tid }}">
+                                        <button id="butt" style="outline:none;border:none;list-style:none;background: none;cursor:pointer;">{{ $vvv->gtname }}</button>
+                                    </form>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="zj_r">
                                 <a href="#"><img src="/o/images/n_img1.jpg" width="236" height="200" /></a>
                                 <a href="#"><img src="/o/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
+                            @endforeach
                         </div>
-                    </li>                    
+                        
+                    </li>
+                    <a href="" hidden>{{ $num -= 40 }}</a>
+                    @endforeach     
                 </ul>            
             </div>
         </div>  

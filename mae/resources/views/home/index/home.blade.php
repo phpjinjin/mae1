@@ -11,9 +11,10 @@
         <div class="banner">        
             <div class="top_slide_wrap">
                 <ul class="slide_box bxslider">
-                    <li><img src="/o/images/ban1.jpg" width="740" height="401" /></li>
-                    <li><img src="/o/images/ban1.jpg" width="740" height="401" /></li> 
-                    <li><img src="/o/images/ban1.jpg" width="740" height="401" /></li> 
+                    @foreach($slid as $k=>$v)
+                    <li><a href="/home/goods/{{ $v->surl }}"><img src="{{ asset('uploads/slid/'.$v->simg) }}" width="740" height="401" /></a></li>
+                    
+                    @endforeach
                 </ul>   
                 <div class="op_btns clearfix">
                     <a href="#" class="op_btn op_prev"><span></span></a>
@@ -22,7 +23,7 @@
             </div>
         </div>
         <script type="text/javascript">
-        //var jq = jQuery.noConflict();
+        // var jq = jQuery.noConflict();
         (function(){
             $(".bxslider").bxSlider({
                 auto:true,

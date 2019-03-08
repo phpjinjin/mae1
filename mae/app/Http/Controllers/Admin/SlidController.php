@@ -121,7 +121,7 @@ class SlidController extends Controller
         $slid = Slid::where('sid',$id)->first();
         //如果没有上传就
         if(!$request->hasFile('simg')){
-            $slid->simg = $data->simg;
+            $slid->simg = $slid->simg;
         }else{
             $file = $request->file('simg');
             $ext = $file->extension();
