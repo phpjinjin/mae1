@@ -1,6 +1,13 @@
 @extends('home.index.content')
 @section('content')
 <!--End Header End--> 
+@section('menu')
+<script type="text/javascript" src="/o/js/n_nav.js"></script>
+<script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
+@endsection
+@section('none')
+<div class="leftNav none">
+@endsection
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
