@@ -39,6 +39,8 @@
 		<div class="m_right" style="width: 979px;">
             <p></p>
             <div class="mem_tit">添加地址</div>
+            <form action="/home/address/store" method="post">
+                {{csrf_field()}}
             <table border="0" class="add_tab" style="width:930px;"  cellspacing="0" cellpadding="0">
               <tr>
                 <td width="135" align="right">配送地区</td>
@@ -46,7 +48,6 @@
                     <input type="text" name="region" class="add_ipt" />
                     （必填）
                 </td>
-
                 <td align="right">邮政编码</td>
                 <td style="font-family:'宋体';"><input type="text" name="code" class="add_ipt" />（必填）
                 </td>
@@ -70,8 +71,10 @@
               </tr>
             </table>
             <p align="right">
-              <a href="/home/address/update/1" class="add_b">确认添加</a>&nbsp; &nbsp; 
+              <input style="width: 90px;height: 25px;line-height: 25px;overflow: hidden;background-color: #d97593;color: #FFF;font-size: 12px;font-family: '宋体';text-align: center;margin-left: 10px;border: 0;cursor: pointer;float: right; margin-right: 20px;" type="submit" class="add_b" value="确认添加">&nbsp; &nbsp; 
             </p> 
+            </form>
+            
         </div>
     </div>
 @endsection

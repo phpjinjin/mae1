@@ -45,9 +45,14 @@ class CollectController extends Controller
     public function index(Request $request)
     {
         //
-        // $data = Goods_collect::all();
-        // dd($request);
-        return view('home.collect.index');
+        $collect = Goods_collect::all();
+        $goods = [];
+        // dd($collect);
+        foreach ($collect as $k => $v) {
+            $data = Goods::where('gid',$v['gid'])->get();
+            $goods[] = $data[0];
+        }
+        return view('home.collect.index',['goods'=>$goods]);
     }
 
     /**
@@ -137,7 +142,9 @@ class CollectController extends Controller
     public function delete($id)
     {
         //
-        $del = Goods_collect::destroy($id);
+        // dd($id);
+        $del = Goods_collect::where('gid',$id)->delete();
+
         //判断是否正常
         if($del){
             return redirect($_SERVER['HTTP_REFERER'])->with('qxcg','删除成功');
