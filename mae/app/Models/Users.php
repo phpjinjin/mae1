@@ -14,7 +14,7 @@ class Users extends Model
       //用户主表users和用户详情表一对一
     public function userinfo()
     {
-        return $this->hasOne('App\Models\UsersDetail','user_id');
+        return $this->hasOne('App\Models\UsersDetail','udid');
     }
 
 }

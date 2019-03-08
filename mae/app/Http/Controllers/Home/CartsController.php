@@ -7,8 +7,25 @@ use App\Http\Controllers\Controller;
 use App\Models\Goods;
 use App\Models\Carts;
 
+
 class CartsController extends Controller
 {
+    /**
+     * 查询购物车数量
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function carts_count()
+    {
+        $cart = Carts::get();
+        $cart->tiao = $cart->count();
+        $sum = 0;
+        foreach($cart as $k=>$v){
+            $sum += $v->cart_good[0]->price * $v->cnt;
+        }
+        $cart->sum = $sum;
+        return $cart;
+    }
     /**
      * 加入购物车
      *

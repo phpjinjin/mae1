@@ -13,26 +13,41 @@ use App\Models\Cate;
 class GoodsController extends Controller
 {
     /**
+     * 分配类别
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function getCate($pid = 0)
+    {
+        $pid_data = Cate::where('pid',$pid)->get();
+        $arr = [];
+        foreach($pid_data as $k=>$v){
+            $v['sub'] = self::getCate($v->tid);
+            $arr[] = $v;
+        }
+        return $arr;
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',15);
+        $count = $request->input('count',5);
         $search = $request->input('search','');
-        $tiao = Goods::count();
-        $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-        $pid_data = Cate::where('pid',0)->get(); //一级分类  用途 花材
-        // foreach($pid_data as $k=>$v){
-        //     $v['sub']=>Cate::where('pid',$v->id)->get(); //二级分类 鲜花类别
-        //     foreach ($v['sub'] as $kk=>$vv){
-        //         $vv['sub'] = Cate::where('pid',$vv->id)->get(); //三级类
-        //     }
-        // }
+        $tid = $request->input('tid','');
+        if($tid === ""){
+            $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
+            $tiao = $data->count();
+        }else{
+            $data = Goods::where('tid',$tid)->paginate($count);
+            $tiao = $data->count();
+        }
         return view('home.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

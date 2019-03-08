@@ -55,7 +55,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     *订单详情
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -157,8 +157,11 @@ class OrdersController extends Controller
     public function delete($id)
     {
         $res = Orders::find($id);
+     
         $orders = Orders::destroy($id);
+     
         $ordersdetail = OrdersDetail::destroy($res->ordersdetail->oid);
+     
         if($orders && $ordersdetail){
         	echo '1';
         }else{

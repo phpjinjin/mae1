@@ -22,4 +22,4 @@ li{list-style:none;}
 #tsShopContainer #tsPicContainer #tsImgSCon ul{width:100%;overflow:hidden;}
 #tsShopContainer #tsPicContainer #tsImgSCon li{width:90px; float:left;cursor:pointer;}
 #tsShopContainer #tsPicContainer #tsImgSCon li img{padding:2px;margin:1px;border:1px solid  #eaeaea; display:block;width:79px;height:79px;}
-#tsShopContainer #tsPicContainer #tsImgSCon li.tsSelectImg img{border:3px solid #ff4e00; padding:1px; margin:0px;}
+#tsShopContainer #tsPicContainer #tsImgSCon li.tsSelectImg img{border:3px solid pink; padding:1px; margin:0px;}

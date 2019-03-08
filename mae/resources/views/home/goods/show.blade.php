@@ -20,7 +20,7 @@
 <div class="postion">
     	<span class="fl">全部 > 美妆个护 > 香水 > {{ $goods->goodstype->gtname }} > {{ $goods->gname }}</span>
     </div>    
-    <div class="content">
+    <div class="content" style="border:1px solid #D9D9D9; padding:10px;">
         <div id="tsShopContainer">
             <div id="tsImgS"><a href="{{ asset('uploads/gpic/'.$pic[0]->gpic) }}" title="{{ $goods->gname }}" class="MagicZoom" id="MagicZoom"><img src=" {{ asset('uploads/gpic/'.$pic[0]->gpic) }}" width="390" height="390" /></a></div>
             <div id="tsPicContainer">

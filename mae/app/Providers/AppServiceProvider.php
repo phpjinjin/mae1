@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\Controllers\Home\GoodsController;
+use App\Http\Controllers\Home\CartsController;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,8 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
-         // View::share('common_forum_cate',IndexController::getPidForumCates());
+        //共享数据
+         View::share('cate_data',GoodsController::getCate());
+         View::share('carts_count',CartsController::carts_count());
     }
 
     /**

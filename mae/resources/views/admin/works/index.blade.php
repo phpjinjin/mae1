@@ -50,35 +50,35 @@
 			<tbody>
 				  @foreach($data as $k=>$v )
         			
-				  <tr class="text-c" id="tr{{ $v->wid }}" >
+				  <tr class="text-c" id="tr{{ $v->woid }}" >
 				   
-				    <td >{{ $v->wtitle  or ''}}</td>
-				    <td>{{ $v->wuname  or '' }}</td>
-				    <td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->wtitle  or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->wuname  or '' }}</td>
+				    <td style="text-align:center;vertical-align:middle;">
 				      <a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">
 				        <img width="110" class="picture-thumb" src="{{ asset( 'uploads/works/'.$v->wpic) }}"></a>
 				    </td>
 				   
 				    
-				    <td class="td-status">
+				    <td class="td-status" style="text-align:center;vertical-align:middle;">
 				    	
 				    	 <span class="label label-success radius">@if( $v->wstatus == 1) 已投放 @else已下刊@endif</span>
 				    		    	
 				     </td>
 				     <label id="yydd" hidden>{{ $v->wcontent  or ''}}</label>
 
-				     <td class="td-manage">
+				     <td class="td-manage" style="text-align:center;vertical-align:middle;">
 					
-						<i class="Hui-iconfont" id="abcc" onclick ="shows({{  $v->wid  or '' }});" >&#xe720;</i>
+						<i class="Hui-iconfont" id="abcc" onclick ="shows({{  $v->woid  or '' }});" >&#xe720;</i>
 							
 					
 
-						<a style="text-decoration:none" onclick="picture_stop(this,'10001')" href="/admin/works/putaway/{{ $v->wid  }}" @if($v->astatus == 1)title="下刊" @elseif($v->astatus == 2) title="投放" @endif>
+						<a style="text-decoration:none" onclick="picture_stop(this,'10001')" href="/admin/works/putaway/{{ $v->woid  }}" @if($v->astatus == 1)title="下刊" @elseif($v->astatus == 2) title="投放" @endif>
 							<i class="Hui-iconfont">@if($v->wstatus == 1)&#xe6de;@else &#xe6dc; @endif</i>
 							</a> 
-						<a style="text-decoration:none"  class="ml-5"  onclick ="edits({{  $v->wid  or '' }});" title="编辑"><i class="Hui-iconfont"></i></a>
+						<a style="text-decoration:none"  class="ml-5"  onclick ="edits({{  $v->woid  or '' }});" title="编辑"><i class="Hui-iconfont"></i></a>
 						
-						 <a style="text-decoration:none"  class="ml-5"  onclick ="deleted({{  $v->wid  or '' }});" num="{{  $v->wid  or '' }}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+						 <a style="text-decoration:none"  class="ml-5"  onclick ="deleted({{  $v->woid  or '' }});" num="{{  $v->woid  or '' }}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
 					
 					</td>
 				  </tr>
@@ -120,7 +120,7 @@
 			  shadeClose: true,
 			  shade: 0.6,
 			  area: ['780px', '90%'],
-			  content: '/admin/works/works/'+id+'/edit' 
+			  content: '/admin/works/'+id+'/edit' 
 			  }); 
 		} 
 				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引

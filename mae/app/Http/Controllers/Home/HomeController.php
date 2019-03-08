@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Goods;
+use App\Models\Link;
+use App\Models\Webs;
+use App\Models\Works;
+use App\Models\Slid;
+
 
 class HomeController extends Controller
 {
@@ -14,8 +20,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //获取轮播图信息
+        $slid = Slid::get();
+
+        //
+        //return 2;
+        $webs = Webs::get();
+        $status = $webs[0]->status;
         
-        return view('home.index.home');
+        // dd($status);
+        if($status == 1){
+            return view('home.index.home',['slid'=>$slid]);
+        }
+        // else{
+        //     return view('');
+        // }
+
     }
 
     /**

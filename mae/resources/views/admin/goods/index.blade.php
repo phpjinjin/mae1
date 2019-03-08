@@ -41,8 +41,8 @@
 				<tr class="text-c" role="row">
 					<th class="sorting_disabled" rowspan="1" colspan="1" style="width: 40px;" aria-label="" width="40">
 					<input name="" type="checkbox" value=""></th><th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80px;" aria-sort="descending" aria-label="ID: 升序排列" width="80">ID</th>
-					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="分类: 升序排列" width="100">商品名称</th>
-					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="分类: 升序排列" width="100">所属类别</th>
+					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 300px;" aria-label="分类: 升序排列" width="100">商品名称</th>
+					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 300px;" aria-label="分类: 升序排列" width="100">所属类别</th>
 					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 210px;" aria-label="封面: 升序排列" width="100">商品价格</th>
 					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 836px;" aria-label="图片名称: 升序排列">商品图片</th>
 					<th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 150px;" aria-label="Tags: 升序排列" width="150">商品颜色</th>
@@ -56,9 +56,8 @@
 			<tr id="tr{{ $v->gid }}" class="text-c odd" role="row">
 					<td><input name="" type="checkbox" value=""></td>
 					<td class="sorting_1">{{ $v->gid }}</td>
-					<td>{{ $v->gname }}</td>
+					<td style="width:20px">{{ $v->gname }}</td>
 					<td>{{ $v->tid }}</td>
-					
 					<td>{{ $v->price }} ¥</td>
 					<td><a href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')"><img class="img-thumbnail" src="{{ asset('uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="77" height="77"></a></td>
 					<td class="text-c">{{ $v->color }}</td>
@@ -79,6 +78,7 @@
 			</tbody>
 		</table>
 		<div style="float:right;">{{ $goods->appends($request)->links() }}</div>
+		
 	</div>
 </div>
 

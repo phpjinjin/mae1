@@ -1,30 +1,25 @@
 @extends('home.index.content')
-
 @section('content')
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
+
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
+<style type="text/css">
+    #cart{
+        text-decoration: none;
+        font-family:STHeiti;
+    }
+    #cart:hover{
+        font-weight:bold;
+    }
+</style>
 @endsection
 @section('none')
 <div class="leftNav none">
 @endsection
-
-
-<div class="postion">
-    	<span class="fl">全部 > 美妆个护 > 香水 > </span>
-        <span class="n_ch">
-            <span class="fl">品牌：<font>香奈儿</font></span>
-            <a href="#"><img src="/o/images/s_close.gif" /></a>
-        </span>
-    </div>
-    <!--Begin 筛选条件 Begin-->
-    <div class="content mar_10">
-    	<table border="0" class="choice" style="width:100%; font-family:'宋体'; margin:0 auto;" cellspacing="0" cellpadding="0">
-                                
-        </table>                                                                                 
-    </div>
-    <!--End 筛选条件 End-->
-    
     <div class="content mar_20">
     	<div class="l_history">
         	<div class="his_t">
@@ -85,45 +80,27 @@
                     </a>
                     <a href="#">新品</a>
                 </span>
-                <span class="fr">共发现120件</span>
+                <span class="fr">共发现<span style="color:red;">{{ $tiao }}</span>件</span>
             </div>
             <div class="list_c">
             	
                 <ul class="cate_list">
                 	@foreach($goods as $k=>$v)
                 	<li>
-                    	<div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('/uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="210" height="185" /></a></div>
                         <div class="price">
                             <font>￥<span>{{ $v->price }}</span></font> &nbsp;&nbsp;&nbsp;&nbsp; 销量:{{ $v->salecnt }}
                         </div>
                         <div class="name"><a href="#">{{ $v->gname }}</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a onclick="carts({{ $v->gid }})" class="j_car">加入购物车</a>
+                        	<a id="shou{{$v->gid}}" onclick="shou({{ $v->gid }})" class="ss">收藏</a>
+                            <a onclick="carts({{ $v->gid }})" class="j_car" id="cart">加入购物车</a>
                         </div>
                     </li>
                     @endforeach
                 </ul>
-                <script type="text/javascript">
-                    function carts(gid){
-                        var cnt = 1;
-                        var url = '/home/carts/add/'+cnt+'/'+gid;
-                        $.get(url , function(res){
-                            if(res) {
-                                layer.alert('已加入购物车', {
-                                  icon: 1,
-                                  skin: 'layer-ext-moon' 
-                                })
-                            } else {
-                                layer.msg('加入购物车失败',{icon: 1});
-                            }
-                        });
-                    }
-                    
-                    
-                </script>
-                <div class="pages">
-                	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
+                <div style="float:right;">
+                    {{ $goods->appends($request)->links() }}</a>
                 </div>
                 
                 
@@ -131,4 +108,36 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function shou(gid){
+            
+            var url = '/home/collect/add/'+gid;
+            $.get(url , function(res){
+                if(res){
+                    layer.msg('操作成功',{icon: 1});
+                    $('#shou'+gid).text(res);
+                }else{
+                    layer.msg(res,{icon: 2});
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function carts(gid){
+            var cnt = 1;
+            var url = '/home/carts/add/'+cnt+'/'+gid;
+            $.get(url , function(res){
+                if(res) {
+                    layer.alert('已加入购物车', {
+                      icon: 1,
+                      skin: 'layer-ext-moon' 
+                    })
+                } else {
+                    layer.msg('加入购物车失败',{icon: 1});
+                }
+            });
+        }
+                    
+                    
+    </script>
 @endsection

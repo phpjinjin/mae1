@@ -55,32 +55,28 @@
         			
 				  <tr class="text-c" id="tr{{ $v->advid }}">
 				  
-				    <td>{{$v->amsg or ''}}</td>
-				    <td>{{ $v->atitle or '' }}</td>
-				    <td>
+				    <td style="text-align:center;vertical-align:middle;">{{$v->amsg or ''}}</td>
+				    <td style="text-align:center;vertical-align:middle;">{{ $v->atitle or '' }}</td>
+				    <td style="text-align:center;vertical-align:middle;">
 				      <a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">
 				        <img width="110" class="picture-thumb" src="{{ asset( 'uploads/adver/'.$v->apic) }}"></a>
 				    </td>
-				    <td class="text-l">{{ $v->aurl or '' }}</td>
+				    <td  style="text-align:center;vertical-align:middle;">{{ $v->aurl or '' }}</td>
 				    
-				    <td class="td-status">
+				    <td class="td-status" style="text-align:center;vertical-align:middle;">
 				    	
 				    	 <span class="label label-success radius">@if( $v->astatus == 0) 已投放 @else已下刊@endif</span>
 				    		    	
 				     </td>
 				     
 
-				     <td class="td-manage">
+				     <td class="td-manage" style="text-align:center;vertical-align:middle;">
 					<form action="/admin/adver/{{ $v->advid }}" method="post">
 						<a style="text-decoration:none" onclick="picture_stop(this,'10001')" href="/admin/adver/{{ $v->advid or '' }}" @if($v->astatus == 0)title="下刊" @else title="投放" @endif>
 							<i class="Hui-iconfont">@if($v->astatus == 0)&#xe6de;@else &#xe6dc; @endif</i>
 							</a> 
 						<a style="text-decoration:none" class="ml-5" onclick="edits({{ $v->advid }})"  title="编辑"><i class="Hui-iconfont"></i></a>
 						<a style="text-decoration:none"  class="ml-5"  onclick ="deleted({{  $v->advid  or '' }});" num="{{  $v->advid  or '' }}" title="编辑"><i class="Hui-iconfont">&#xe6e2;</i></a>
-
-							{{ csrf_field() }}
-							{{ method_field('DELETE') }}
-						
 					</form>
 					</td>
 				  </tr>
