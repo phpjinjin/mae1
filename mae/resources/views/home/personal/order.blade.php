@@ -16,14 +16,18 @@
             <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
               <tr>                                                                                                                                                    
                 <td width="20%">订单号</td>
-                <td width="25%">下单时间</td>
+                <td width="15%">下单时间</td>
                 <td width="15%">订单总金额</td>
                 <td width="25%">订单状态</td>
-                <td width="15%">操作</td>
+                <td width="15%" >操作</td>
+                <td width="10%" >操作</td>
+               
+               
               </tr>
               @foreach($order as $k=>$v)
+           
               <tr id="tr{{ $v->oid }}">
-                <td><font color="#ff4e00">{{$v->oid}}</font></td>
+                <td><font color="#ff4e00">{{ $v->oid }}</font></td>
                 <td>{{ $v->created_at }}</td>
                 <td>￥{{ $v->sum }}</td>
 
@@ -38,14 +42,15 @@
                 @endif
 
                 @if($v->status==1)
-                 <td onclick ="deleted({{  $v->oid  }});"> 取消订单</td>
+                 <td onclick ="deleted({{  $v->oid  }});"> 取消订单</td> 
+                 <td onclick ="show({{  $v->oid  }});"> 订单详情</td> 
                 @else
-                <td><font color="#ff4e00">已确认</font></td>
+                <td><font color="#ff4e00">已确认</font></td> 
                 @endif
               </tr>
              
               @endforeach
-            </table>
+            </table> 
 
 <script type="text/javascript">
 	function deleted(id){
@@ -67,7 +72,16 @@
 		
 		}
 
-
+ function show(id){
+    layer.open({
+        type: 2,
+        title: '订单详情',
+        shadeClose: true,
+        shade: 0.6,
+        area: ['1000px', '55%'],
+        content: '/home/center/show/'+id,
+      });
+    }
 
 </script>
 

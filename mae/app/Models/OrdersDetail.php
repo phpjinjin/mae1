@@ -14,6 +14,8 @@ class OrdersDetail extends Model
     //不验证时间
     public $timestamps = false; 
 
+       
+
 	    // 设置详情表(ordersdetail)与商品表(Goods)的关联(多对一)
 	   public function goods()
 	   {

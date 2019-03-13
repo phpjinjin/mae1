@@ -31,7 +31,7 @@ class CartsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add($cnt,$gid)
+    public function add(Request $request,$cnt,$gid)
     {
         //如果是同一件商品就在原基础上加一
         $cartss = Carts::where('gid',$gid)->first();
@@ -44,8 +44,9 @@ class CartsController extends Controller
                 echo 0;
             }
         }else{
+            $id = $request->session()->get('id');
             $carts = new Carts;
-            $carts->uid = 999;
+            $carts->uid = $id;
             $carts->gid = $gid;
             $carts->cnt = $cnt;
             if($carts->save()){
@@ -88,9 +89,10 @@ class CartsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $carts = Carts::where('uid',999)->get();
+        $id = $request->session()->get('id');
+        $carts = Carts::where('uid',$id)->get();
         
         // foreach ($carts as $key => $value) {
         //     $value->cart_good[0]->goodspic[0]->gpic;

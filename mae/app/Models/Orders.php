@@ -11,6 +11,11 @@ class Orders extends Model
     //订单详情表id
     public $primaryKey='oid';
 
+    protected $casts = [
+                'oid' =>'string'
+            ];
+
+
 
     //一对一、订单主表与订单详情
     public function ordersdetail()
