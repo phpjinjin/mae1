@@ -127,7 +127,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        DB::beginTransaction();
+        
         $res1 = Admins_users::destroy($id);
         if($res1 ==true){
            

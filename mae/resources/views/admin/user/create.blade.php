@@ -8,37 +8,35 @@
 <body>
 <article class="page-container">
 	<form class="form form-horizontal" id="form-admin-add" action="/admin/user" method="post">
-	{{csrf_field()}}
-	<!-- 显示错误信息 -->
-		@if (session('success'))
-            <div class="class='alert alert-success" role="lert">
-                {{ session('success') }}
-            </div>
-        @endif
-
-
-        @if (session('error'))
-            <div class="class='alert alert-danger" role="lert">
-                {{ session('error') }}
-            </div>
-        @endif
+	
+     {{ csrf_field() }}
+		@if (count($errors) > 0)
+	    <div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			 <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+		</div>
+		@endif
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账号：</label>
 		<div class="formControls col-xs-8 col-sm-7">
-			<input type="text" class="input-text" value="" placeholder="请输入您的账号" id="adminName" name="account">
+			<input type="text" class="input-text" value="" placeholder="请输入您的账号(6~18位数字)" id="adminName" name="account">
 		</div>
 	</div>
 	
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码(首位字母的)：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
 		<div class="formControls col-xs-8 col-sm-7">
-			<input type="password" class="input-text" autocomplete="off" value="" placeholder="密码" id="password" name="password">
+			<input type="password" class="input-text" autocomplete="off" value="" placeholder="请输入6~18位密码" id="password" name="password">
 		</div>
 	</div>
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
 		<div class="formControls col-xs-8 col-sm-7">
-			<input type="password" class="input-text" autocomplete="off"  placeholder="确认新密码" id="password2" name="respass">
+			<input type="password" class="input-text" autocomplete="off"  placeholder="确认密码" id="password2" name="respass">
 		</div>
 	</div>
 	<div class="row cl">

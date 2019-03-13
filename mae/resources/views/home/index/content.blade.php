@@ -45,13 +45,17 @@
             color:#FF4466;
             font-weight:bold;
         }
+        a:hover{
+            text-decoration:none;
+            color:pink; 
+        }
     </style>
 <title>朝花夕拾</title>
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
 <body>
 </head>
-<body>  
+<body style="font-size: 12px;">  
 <!--Begin Header Begin-->
 <div class="soubg">
     <div class="sou">
@@ -134,11 +138,14 @@
         <!--End 所在收货地区 End-->
         <span class="fr">
             <span class="fl">你好
-            @if(session('login') == null)<a href="/home/login">，请登录/免费注册
+            @if(session('login') == null)<a href="/home/login">，请登录/免费注册|
             @elseif(  session('login') == true) <a href="/home/center">  {{ session('account') }}
             @endif
            
-            </a>&nbsp;|&nbsp;<a href="#">个人中心</a>&nbsp;|</span>
+            @if(  session('login') == true)
+            </a>&nbsp;<a href="/home/exit">退出</a>&nbsp;|
+            @endif
+            <a href="#">个人中心</a>&nbsp;|</span>
             <span class="ss">
                 <div class="ss_list">
                     收藏夹

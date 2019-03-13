@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\Models\Admins_users;
 use Hash;
-use App\Models\UsersDetail;
 class LoginController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         //
-        return view('home.login.index');
+        return view('admin.login.index');
     }
 
     /**
@@ -37,25 +36,19 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        //接收数据
-        $data = $request->only(['account','password']);
-        $user = users::where('account',$data['account'])->first();
-        $id = $user->uid;
-        $userdetails = UsersDetail::where('user_id',$id)->first();
-        $status = $userdetails->status;
-        if($status == 0){
-            return redirect('/home/login')->with('error','未完成激活,请激活后再登录');
-        }
+    {
+        $data = $request->except('_token');
+        $user = Admins_users::where('account',$data['account'])->first();
+        
         if(!$user){           
-            return redirect('/home/login')->with('error','账号错误,请重新输入');
+            return redirect('/admin/login')->with('error','账号错误,请重新输入');
             }   
         if(Hash::check($data['password'],$user->password)){
-            session(['login'=>true,'id'=>$user->uid,'account'=>$data['account']]);
-            // echo session(['login','id']);
-            return redirect('/home/index')->with('success','登录成功');   
+            session(['login'=>true,'id'=>$user->aid]);
+            return redirect('/admin')->with('success','登录成功');   
        } 
-            return redirect('/home/login')->with('error','密码错误,请重新输入'); 
+            return redirect('/admin/login')->with('error','密码错误,请重新输入');  
+        
     }
 
     /**
@@ -102,13 +95,14 @@ class LoginController extends Controller
     {
         //
     }
+
     /**
      * 退出登录
      * @return [type] [description]
      */
-    public function exit()
+     public function exit()
     {
-        session(['login'=>null,'id'=>'','account'=>'']);
-        return redirect('/home/index');
+        session(['login'=>null,'id'=>'']);
+        return redirect('/admin/login');
     }
 }

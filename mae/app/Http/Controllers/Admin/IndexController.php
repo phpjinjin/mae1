@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Admins_users;
 class IndexController extends Controller
 {
     /**
@@ -13,8 +13,10 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.index.index');
+    {   
+        $id = session('id');
+        $user = Admins_users::find($id);
+        return view('admin.index.index',['user'=>$user]);
     }
 
     /**

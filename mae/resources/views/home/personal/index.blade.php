@@ -23,7 +23,8 @@
           <div class="left_m">
               <div class="left_m_t t_bg2">个人中心</div>
                 <ul>
-                  <li><a href="Member_User.html" class="now">用户信息</a></li>
+                  <li><a href="/home/center/information" class="now">用户信息</a></li>
+                  <li><a href="/home/center/password" class="now">修改密码</a></li>
                     <li><a href="Member_Collect.html">我的收藏</a></li>
                     
                     <li><a href="#">我的评论</a></li>
@@ -42,7 +43,7 @@
         </div>
 		<div class="m_right">
       @section('order')
-
+      
     @show
         </div>
     </div>

@@ -14,18 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//后台登录页面
+Route::get('admin/exit','Admin\LoginController@exit');
+Route::resource('admin/login','Admin\LoginController');
+Route::group(['middleware'=>'alogin'],function(){
+	//后台首页路由
+	Route::get('/admin','Admin\IndexController@index');
+	//后台用户管理
+	Route::resource('admin/user','Admin\UserController');
+	//后台前台用户页面
+	Route::resource('admin/users','Admin\UsersController');
+	});
 
-//后台首页路由
-Route::get('/admin','Admin\IndexController@index');
-//后台用户管理
-Route::resource('admin/user','Admin\UserController');
 //前台登录页面
+Route::get('home/exit','Home\LoginController@exit');
 Route::resource('home/login','Home\LoginController');
+
 //前台注册页面
 Route::get('home/register/changestatus/{id}/{token}','Home\RegisterController@changeStatus');
 Route::post('home/register/phone','Home\RegisterController@phone');
 Route::get('home/register/sendPhone','Home\RegisterController@sendphone');
 Route::resource('home/register','Home\RegisterController');
+Route::group(['middleware'=>'hlogin'],function(){
+		//个人中心用户信息
+		Route::get('home/center/information','Home\CenterController@create');
+		Route::get('home/center/edit/{id}','Home\CenterController@edit');
+		Route::post('home/center/store/{id}','Home\CenterController@store');
+		//个人中心修改密码
+		Route::get('home/center/password','Home\CenterController@password');
+		Route::post('home/center/save','Home\CenterController@save');
+        });
 
 
 
@@ -105,7 +123,7 @@ Route::get('/admin/orders/orders/{id}','Admin\OrdersController@delete');
 //后台浏览订单发货
 Route::resource('/admin/orders','Admin\OrdersController');
 //个人中心首页
-Route::get('home/center','Home\CenterController@index');
+Route::get('home/center/','Home\CenterController@index');
 //个人中心订单页面
 Route::get('home/center/order','Home\CenterController@order');
 //取消订单

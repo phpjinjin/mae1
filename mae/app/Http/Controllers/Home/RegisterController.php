@@ -213,6 +213,7 @@ class RegisterController extends Controller
         $res2 = $usersdetail->save();
         if($res1 && $res2){
             DB::commit();
+            $usersdetail->status= 1;
             return redirect('/home/login')->with('success','注册成功');
         }else{
             DB::rollBack();
