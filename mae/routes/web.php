@@ -105,9 +105,11 @@ Route::get('/admin/orders/orders/{id}','Admin\OrdersController@delete');
 //后台浏览订单发货
 Route::resource('/admin/orders','Admin\OrdersController');
 //个人中心首页
-Route::get('home/center','Home\CenterController@index');
+Route::get('home/ ','Home\CenterController@index');
 //个人中心订单页面
 Route::get('home/center/order','Home\CenterController@order');
+// 个人中心订单详情
+Route::get('/home/center/show/{id}','Home\CenterController@show');
 //取消订单
 Route::get('/home/center/delete/{id}','Home\CenterController@delete');
 // 文章路由
@@ -115,6 +117,12 @@ Route::get('/home/article','Home\ArticleController@index');
 Route::get('/home/article/show/{id}','Home\ArticleController@show');
 //前台订单
 Route::get('/home/orders','Home\OrdersController@index');
+// 修改收货地址
+Route::get('/home/orders/shows/{id}','Home\OrdersController@show');
+// 提交修改地址后数据
+Route::post('/home/orders/up/{id}','Home\OrdersController@up');
+// 提交订单
+Route::post('/home/orders/create','Home\OrdersController@create');
 
 
 
@@ -170,6 +178,7 @@ Route::get('home/address/edit/{id}','Home\AddressController@edit');
 Route::post('home/address/store','Home\AddressController@store');
 Route::get('home/address/update/{id}','Home\AddressController@update');
 Route::get('home/address/delete/{id}','Home\AddressController@delete');
+
 Route::resource('home/address','Home\AddressController');
 
 

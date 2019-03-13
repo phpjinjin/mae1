@@ -45,13 +45,17 @@
             color:#FF4466;
             font-weight:bold;
         }
+        a:hover{
+            text-decoration:none;
+            color:pink; 
+        }
     </style>
 <title>朝花夕拾</title>
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
 <body>
 </head>
-<body>  
+<body style="font-size:12px;">  
 <!--Begin Header Begin-->
 <div class="soubg">
     <div class="sou">

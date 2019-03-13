@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use App\Models\OrdersDetail;
 use App\Models\Users;
+use App\Models\Goods;
 
 
 class CenterController extends Controller
@@ -15,10 +16,8 @@ class CenterController extends Controller
 	public function index(Request $request)
 	{
 		
-	// 	if ($request->session()->exists('uname')) {
-		
-	// }
-		
+	  
+	   
 		return view('home.personal.index');
 		
 
@@ -31,12 +30,11 @@ class CenterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function order(Request $request){
-	    session(['key' => 'value']);
-	    session(['key1' => '1']);
+	     $id = $request->session()->get('id');
 
-		 $data = $request->session()->get('key1');
 		
-	   	$order = Orders::where('uid','=',$data)->get();
+		
+	   	$order = Orders::where('uid',$id)->get();
 
    		return view('home.personal.order',['order'=>$order]);
     }
@@ -47,9 +45,15 @@ class CenterController extends Controller
      */
     public function delete($id){
 	    $res = Orders::find($id);
-     
+        $res1 = OrdersDetail::where('oid',$id)->get();
         $orders = Orders::destroy($id);
-        $ordersdetail = OrdersDetail::destroy($res->ordersdetail->oid);  
+      foreach ($res1 as $k =>$v) {
+               $ordersdetail = OrdersDetail::destroy($v->odid);  
+      }
+        
+        
+       
+        
         if($orders && $ordersdetail){
         	echo '1';
         }else{
@@ -57,6 +61,27 @@ class CenterController extends Controller
         }
         
     }
+     /**
+     *订单详情
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function show(Request $request,$id)
+     {
+        $uid =   $request->session()->get('id');
+           $orders = Orders::where('uid',$uid)->get();
+       foreach ($orders as $k => $v) {
+       
+            $goods = Goods::where('gid',$v->ordersdetail->gid)->get();
+            
+       }
+       foreach ($goods as $kk => $vv) {
+              dump($vv->goodspic[0]);
+       }
+
+        return view('home.personal.show',['orders'=>$orders,'goods'=>$goods]);
+
+     }
 
 
 }
