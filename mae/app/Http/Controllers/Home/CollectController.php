@@ -45,14 +45,18 @@ class CollectController extends Controller
     public function index(Request $request)
     {
         //
-        $collect = Goods_collect::all();
-        $goods = [];
-        // dd($collect);
-        foreach ($collect as $k => $v) {
-            $data = Goods::where('gid',$v['gid'])->get();
-            $goods[] = $data[0];
+        if(session('login')){
+            $collect = Goods_collect::all();
+            $goods = [];
+            // dd($collect);
+            foreach ($collect as $k => $v) {
+                $data = Goods::where('gid',$v['gid'])->get();
+                $goods[] = $data[0];
+            }
+            return view('home.collect.index',['goods'=>$goods]);
+        }else{
+            return redirect($_SERVER['HTTP_REFERER'])->with('gologin','请先登录');
         }
-        return view('home.collect.index',['goods'=>$goods]);
     }
 
     /**

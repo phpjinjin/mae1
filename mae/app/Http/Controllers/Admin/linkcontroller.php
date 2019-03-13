@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Link;
+use App\Http\Requests\LinkRequest;
 class linkcontroller extends Controller
 {
     /**
@@ -45,9 +46,8 @@ class linkcontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LinkRequest $request)
     {
-        //
         DB::beginTransaction();
         $link = new Link;
         $link->lname = $request->lname;

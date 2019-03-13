@@ -34,7 +34,6 @@
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
                 <tr class="text-c">
-                <th width="60"><input name="" type="checkbox" value="" >全选</th> 
                     <th width="100">链接名称</th>
                     <th width="100">链接图片</th>
                     <th width="50">链接地址</th>
@@ -44,7 +43,6 @@
             <tbody>
                   @foreach($data as $k=>$v)
                   <tr class="text-c">
-                    <td>{{$v->lid}}</td>
                     <td>{{$v->lname}}</td>
                     <td>
                       <a href="javascript:;" onClick="picture_edit('图库编辑','picture-show.html','10001')">

@@ -170,7 +170,12 @@ Route::get('home/address/edit/{id}','Home\AddressController@edit');
 Route::post('home/address/store','Home\AddressController@store');
 Route::get('home/address/update/{id}','Home\AddressController@update');
 Route::get('home/address/delete/{id}','Home\AddressController@delete');
+Route::get('home/address/moren/{id}','Home\AddressController@moren');
 Route::resource('home/address','Home\AddressController');
+//后台权限管理 
+Route::get('admin/rbac/roles/nodeadd','Admin\NodesController@nodeadd');
+Route::post('admin/rbac/roles/insert','Admin\NodesController@insert');
+Route::resource('admin/rbac/roles','Admin\NodesController');                                                                       
 
 
 

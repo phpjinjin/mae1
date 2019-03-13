@@ -79,8 +79,16 @@
 				<ul>
 					<li><a data-href="/admin/user" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 					<li><a data-href="/admin/user/create" data-title="添加用户" href="javascript:void(0)">添加用户</a></li>
-					<li><a data-href="admin-permission.blade.php" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-					
+			</ul>
+		</dd>
+	</dl>
+	<dl id="menu-admin">
+		<dt><i class="Hui-iconfont">&#xe62d;</i> 权限管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+		<dd>
+			<ul>
+				<li><a data-href="/admin/rbac/roles" data-title="角色列表" href="javascript:void(0)">权限列表</a></li>
+				<li><a data-href="/admin/rbac/roles/create" data-title="添加角色" href="javascript:void(0)">添加角色</a></li>
+				<li><a data-href="/admin/rbac/roles/nodeadd" data-title="添加权限节点" href="javascript:void(0)">添加权限节点</a></li>
 			</ul>
 		</dd>
 	</dl>

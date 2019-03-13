@@ -31,7 +31,6 @@
     <!-- 引入layui -->
     <script src="/d/layui-v2.4.5/layui/layui.js"></script>
     <script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
-    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
     @yield('menu') 
     <style type="text/css">
         #butt:hover{
@@ -45,11 +44,15 @@
             color:#FF4466;
             font-weight:bold;
         }
+        a:hover{
+            text-decoration:none;
+            color:pink; 
+        }
     </style>
 <title>朝花夕拾</title>
 <link href="../../../images/mae.ico" type="image/x-icon" rel="shortcut icon">
 </head>
-<body>
+<body style="font-size: 12px;">
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -133,8 +136,8 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-            <span class="fl">你好
-            @if(session('login') == null)<a href="/home/login">，请登录/免费注册
+            <span class="fl">你好，
+            @if(session('login') == null)<a href="/home/login">请登录/免费注册
             @elseif(  session('login') == true) <a href="/home/center">  {{ session('account') }}
             @endif
            
