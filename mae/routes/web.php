@@ -231,7 +231,7 @@ Route::group(['middleware'=>'alogin'],function(){
 	Route::resource('/admin/cate','Admin\CateController');
 	//属性管理 
 	Route::get('/admin/goodval/dele/{id}','Admin\GoodvalController@dele');
-	Route::resource('/admin/goodval','Admin\GoodvalController')
+	Route::resource('/admin/goodval','Admin\GoodvalController');
 	//商品管理
 	Route::get('/admin/goods/dele/{id}','Admin\GoodsController@dele');
 	Route::resource('/admin/goods','Admin\GoodsController');

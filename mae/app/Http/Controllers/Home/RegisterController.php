@@ -81,14 +81,8 @@ class RegisterController extends Controller
             // return redirect('admin/users')->with('success','添加成功');
             // $title = 'zhuce';
             Mail::send('home.register.send',['token'=>$usersdetail->token,'id'=> $users->uid,'email' =>$data['email']],function($m) use($usersdetail) {
-                dump($usersdetail->email);
-                 $res  = $m->to($usersdetail->email)->subject('【Mae官方】注册邮件');
-            if($res){
-                dd('注册成功,请尽快完成激活');    
-            }else{
-                dd('注册失败');
-            }
-
+                 $m->to($usersdetail->email)->subject('你好呀');
+                dd('注册成功,请尽快完成激活');                
             });
         }else{
             DB::rollBack();

@@ -207,9 +207,12 @@
     <div class="i_car">
         <div class="car_t"><a href="/home/carts">购物车</a> [ <span style="color:#FF4466;">{{ $carts_count->tiao }}</span> ]</div>
         <div class="car_bg">
-            <!--Begin 购物车未登录 Begin-->
-            <div class="un_login">还未登录！<a href="Login.html" style="color:#FF4466;">马上登录</a> 查看购物车！</div>
-            <!--End 购物车未登录 End-->
+            
+          <!--Begin 购物车未登录 Begin-->
+              @if(session('login') == null)
+            <div class="un_login">还未登录！<a href="/home/login" style="color:#FF4466;">马上登录</a> 查看购物车！</div>
+              @else
+              @endif
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars" style="height:250px;">
                 @foreach($carts_count as $k=>$v)

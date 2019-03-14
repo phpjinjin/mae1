@@ -8,12 +8,9 @@
 <script type="text/javascript" src="\o\js/baby_ban.js"></script>
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
-<<<<<<< HEAD
+
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="/o/css/pages.css">
-=======
-
->>>>>>> origin/7zc
 <style type="text/css">
     #cart{
         text-decoration: none;
@@ -22,12 +19,10 @@
     #cart:hover{
         font-weight:bold;
     }
-<<<<<<< HEAD
-    </style>
-=======
 
+    </style>
 </style>
->>>>>>> origin/7zc
+
 @endsection
 @section('none')
 
