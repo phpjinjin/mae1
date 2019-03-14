@@ -32,11 +32,11 @@ class UsersController extends Controller
             $date = UsersDetail::where('user_id',$id)->get();
             //遍历取得的数据
            foreach ($date as $kk => $vv) {             
-           }
-        }
+         
         //显示模板加载视图
          return view('admin.users.index',['vv'=>$vv,'data'=>$data,'request'=>$request->all(),'search'=>$search,'count'=>$count]);
-        
+          }
+        }
     }
 
     /**
