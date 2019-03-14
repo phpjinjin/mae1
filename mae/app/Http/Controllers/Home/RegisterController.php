@@ -33,7 +33,7 @@ class RegisterController extends Controller
     public function create()
     {
         //
-        echo'1111';
+        
     }
 
     /**
@@ -80,7 +80,8 @@ class RegisterController extends Controller
             //
             // return redirect('admin/users')->with('success','添加成功');
             // $title = 'zhuce';
-            Mail::send('home.register.send',[ 'token'=>$usersdetail->token,'id'=> $users->uid,'email' =>$data['email']],function($m) use($usersdetail) {
+            Mail::send('home.register.send',['token'=>$usersdetail->token,'id'=> $users->uid,'email' =>$data['email']],function($m) use($usersdetail) {
+                dump($usersdetail->email);
                  $res  = $m->to($usersdetail->email)->subject('【Mae官方】注册邮件');
             if($res){
                 dd('注册成功,请尽快完成激活');    
@@ -178,7 +179,9 @@ class RegisterController extends Controller
      * @return [type] [description]
      */
     public function phone(PhoneRequest $request)
-    {   //开启事物
+    {  
+
+     //开启事物
         DB::beginTransaction(); 
         //接收数据 
         $data = $request->only(['phone','password','repassword','code']);
@@ -214,6 +217,7 @@ class RegisterController extends Controller
         if($res1 && $res2){
             DB::commit();
             $usersdetail->status= 1;
+            $usersdetail->save();
             return redirect('/home/login')->with('success','注册成功');
         }else{
             DB::rollBack();
