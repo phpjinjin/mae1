@@ -25,7 +25,7 @@ Route::group(['middleware'=>'alogin'],function(){
 	Route::resource('admin/user','Admin\UserController');
 	//后台前台用户页面
 	Route::resource('admin/users','Admin\UsersController');
-	});
+});
 
 //前台登录页面
 Route::get('home/exit','Home\LoginController@exit');

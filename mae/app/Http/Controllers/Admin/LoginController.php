@@ -44,7 +44,7 @@ class LoginController extends Controller
             return redirect('/admin/login')->with('error','账号错误,请重新输入');
             }   
         if(Hash::check($data['password'],$user->password)){
-            session(['login'=>true,'id'=>$user->aid]);
+            session(['alogin'=>true,'id'=>$user->aid]);
             return redirect('/admin')->with('success','登录成功');   
        } 
             return redirect('/admin/login')->with('error','密码错误,请重新输入');  

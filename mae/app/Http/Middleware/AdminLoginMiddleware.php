@@ -15,7 +15,7 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-         if (session('login')) {
+         if (session('alogin')) {
             // 执行下一次请求 通过
             return $next($request);
         }else{
