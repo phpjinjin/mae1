@@ -91,13 +91,9 @@ class CartsController extends Controller
      */
     public function index(Request $request)
     {
+
         $id = $request->session()->get('id');
         $carts = Carts::where('uid',$id)->get();
-        
-        // foreach ($carts as $key => $value) {
-        //     $value->cart_good[0]->goodspic[0]->gpic;
-        
-        // }
         return view('home.carts.index',['carts'=>$carts]);
     }
 

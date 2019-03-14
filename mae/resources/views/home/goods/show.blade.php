@@ -18,7 +18,7 @@
 <div class="leftNav none">
 @endsection
 <div class="postion">
-    	<span class="fl">全部 > 美妆个护 > 香水 > {{ $goods->goodstype->gtname }} > {{ $goods->gname }}</span>
+    	<span class="fl">全部 > {{ $goods->goodstype->gtname }} > {{ $goods->gname }}</span>
     </div>    
     <div class="content" style="border:1px solid #D9D9D9; padding:10px;">
         <div id="tsShopContainer">
@@ -41,10 +41,11 @@
         <div class="pro_des">
         	<div class="des_name">
             	<p>{{ $goods->gname }}</p>
-                “开业巨惠，北京专柜直供”，不光低价，“真”才靠谱！
+                {{ $goods->hot }}位用户查看过此商品
             </div>
             <hr>
             <div class="pro_shp">
+                <p>编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $goods->gid }}</p>
             	<p>类别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $goods->goodstype->gtname }}</p>
                 <p>材料：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $val->wood }}</p>
                 <p>包装：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $val->pack }}</p>
@@ -66,8 +67,21 @@
                         <a href="#"><img src="/o/images/sh_5.gif" /></a>
                     </div>
                 </div>
-                <div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">关注商品</a></div>
+                <div class="d_care"><a id="shou" onclick="shou({{ $goods->gid }})">收藏</a></div>
             </div>
+            <script type="text/javascript">
+                function shou(gid){
+                    var url = '/home/collect/add/'+gid;
+                    $.get(url , function(res){
+                        if(res){
+                            layer.msg('操作成功',{icon: 1});
+                            $('#shou').text(res);
+                        }else{
+                            layer.msg(res,{icon: 2});
+                        }
+                    });
+                }
+            </script>
             <div class="des_join">
             	<div class="j_nums">
             		<input type="text" value="1" name="cnt" id="carts" class="n_ipt">
@@ -102,84 +116,18 @@
     	<div class="l_history">
         	<div class="fav_t">用户还喜欢</div>
         	<ul>
+                @for($i=0;$i < 5;$i++)
             	<li>
-                    <div class="img"><a href="#"><img src="/o/images/his_1.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
+                    <div class="img"><a href="/home/goods/{{ $good_hot[$i]->gid }}"><img src="{{ asset('/uploads/gpic/'.$good_hot[$i]->goodspic[0]->gpic) }}" width="185" height="162" /></a></div>
+                	<div class="name"><a href="/home/goods/{{ $good_hot[$i]->gid }}">{{ $good_hot[$i]->gname }}</a></div>
                     <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
+                    	<font>￥<span>{{ $good_hot[$i]->price }}</span></font> &nbsp;
                     </div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/his_2.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/his_3.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>680.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/his_4.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="/o/images/his_5.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
+               @endfor
         	</ul>
         </div>
-        <div class="l_list">        	
-            <div class="des_border">
-            	<div class="des_tit">
-                	<ul>
-                    	<li class="current">推荐搭配</li>
-                    </ul>
-                </div>
-                <div class="team_list">
-                	<div class="img"><a href="#"><img src="/o/images/mat_1.jpg" width="160" height="140" /></a></div>
-                	<div class="name"><a href="#">倩碧补水组合套装8折促销</a></div>
-                    <div class="price">
-                    	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
-                    	<font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
-                </div>
-                <div class="team_icon"><img src="/o/images/jia_b.gif" /></div>
-                <div class="team_list">
-                	<div class="img"><a href="#"><img src="/o/images/mat_2.jpg" width="160" height="140" /></a></div>
-                	<div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                    <div class="price">
-                    	<div class="checkbox"><input type="checkbox" name="zuhe" /></div>
-                    	<font>￥<span>749.00</span></font> &nbsp; 18R
-                    </div>
-                </div>
-                <div class="team_icon"><img src="/o/images/jia_b.gif" /></div>
-                <div class="team_list">
-                	<div class="img"><a href="#"><img src="/o/images/mat_3.jpg" width="160" height="140" /></a></div>
-                	<div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                    <div class="price">
-                    	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
-                    	<font>￥<span>749.00</span></font> &nbsp; 18R
-                    </div>
-                </div>
-                <div class="team_icon"><img src="/o/images/equl.gif" /></div>
-                <div class="team_sum">
-                	套餐价：￥<span>1517</span><br />
-                    <input type="text" value="1" class="sum_ipt" /><br />
-                    <a href="#"><img src="/o/images/z_buy.gif" /></a> 
-                </div>
-                
-            </div>
+        <div class="l_list">
             <div class="des_border">
                 <div class="des_tit">
                 	<ul>
@@ -192,20 +140,17 @@
                 	
                 	<table border="0" align="center" style="width:100%; font-family:'宋体'; margin:10px auto;" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td>商品名称：迪奥香水</td>
-                        <td>商品编号：1546211</td>
-                        <td>品牌： 迪奥（Dior）</td>
-                        <td>上架时间：2015-09-06 09:19:09 </td>
+                        <td>商品名称：{{ $goods->gname }}</td>
                       </tr>
                       <tr>
-                        <td>商品毛重：160.00g</td>
-                        <td>商品产地：法国</td>
-                        <td>香调：果香调香型：淡香水/香露EDT</td>
+                        <td>商品材料：{{ $val->wood }}</td>
                         <td>&nbsp;</td>
                       </tr>
                       <tr>
-                        <td>容量：1ml-15ml </td>
-                        <td>类型：女士香水，Q版香水，组合套装</td>
+                        <td>商品包装: {{ $val->pack }}</td>
+                      </tr>
+                      <tr>
+                        <td>商品寓意：{{ $val->lang }} </td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                       </tr>
@@ -220,25 +165,25 @@
                 <div class="des_con">
                 	<table border="0" align="center" style="width:745px; font-size:14px; font-family:'宋体';" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="265"><img src="/o/images/de1.jpg" width="206" height="412" /></td>
-                        <td>
-                        	<b>迪奥真我香水(Q版)</b><br />
-                            【商品规格】：5ml<br />
-                            【商品质地】：液体<br />
-                            【商品日期】：与专柜同步更新<br />
-                            【商品产地】：法国<br />
-                            【商品包装】：无外盒 无塑封<br />
-                            【商品香调】：花束花香调<br />
-                            【适用人群】：适合女性（都市白领，性感，有女人味的成熟女性）<br />
+                        <td style="width:265px;"><img src="{{ asset('/uploads/gpic/'.$goods->goodspic[0]->gpic) }}" width="400" height="412" /></td>
+                        <td style="padding:27px;">
+                        	<b>{{ $goods->gname }}</b><br />
+                            【商品编号】：{{ $goods->gid}}<br />
+                            【商品类别】：{{ $goods->goodstype->gtname }}<br />
+                            【商品日期】：{{ $goods->created_at }}<br />
+                            【商品包装】：{{ $val->pack }}<br />
+                            【商品材料】：{{ $val->wood }}<br />
+                            【商品寓意】：{{ $val->lang }}<br />
                         </td>
                       </tr>
+
                     </table>
-                    
+                    <div style="background:#D97593;width:100%;height:1.5px;"></div>
                     <p align="center">
-                    <img src="/o/images/de2.jpg" width="746" height="425" /><br /><br />
-                    <img src="/o/images/de3.jpg" width="750" height="417" /><br /><br />
-                    <img src="/o/images/de4.jpg" width="750" height="409" /><br /><br />
-                    <img src="/o/images/de5.jpg" width="750" height="409" />
+                    @foreach($goods->goodspic as $k=>$v)
+                    
+                    <img style="margin-top:10px;border:1px solid #EAEAEA;" src="{{ asset('/uploads/gpic/'.$v->gpic) }}" width="450" height="425" /><br /><br />
+                    @endforeach
 					</p>
                     
                 </div>

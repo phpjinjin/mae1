@@ -26,7 +26,7 @@ class CateController extends Controller
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',5);
+        $count = $request->input('count',10);
         $search = $request->input('search','');
 
         $cate = Cate::select('*',DB::raw("concat(path,',',tid) as paths"))->where('gtname','like','%'. $search.'%')->orderBy('paths','asc')->paginate($count);

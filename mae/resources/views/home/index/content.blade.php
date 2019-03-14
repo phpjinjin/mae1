@@ -31,6 +31,7 @@
     <!-- 引入layui -->
     <script src="/d/layui-v2.4.5/layui/layui.js"></script>
     <script src="/d/layui-v2.4.5/layui/layui.all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/o/css/pages.css" />
     @yield('menu') 
     <style type="text/css">
         #butt:hover{
@@ -54,6 +55,7 @@
 </head>
 <body style="font-size: 12px;">
 </head>
+
 
 <body style="font-size:12px;">  
 
@@ -238,39 +240,45 @@
                 <ul>
                     <a href="" hidden>{{ $num = 0 }}</a>
                     @foreach($cate_data as $k=>$v)
-                    <li>
 
+                    <li>
                         <div class="fj">
-                            <span class="n_img"><span></span><img src="/o/images/nav1.png" /></span>
+                            <span class="n_img"><span></span><img src="/o/images/cate2.ico" /></span>
                             <span class="fl">{{ $v->gtname }}</span>
                         </div>
-                        
-                        <div class="zj" style="top:{{ $num  }}px;">
-                            @foreach($v['sub'] as $kk=>$vv)
-                            <div class="zj_l">
+                        <div class="zj" style="top:{{ $num  }}px;background:#f9f9f9;border: 1px solid #C3C3C3">
+                            <div class="zj_l"">
+                                @foreach($v['sub'] as $kk=>$vv)
                                 <div class="zj_l_c">
-                                    <h2>{{ $vv->gtname }}</h2>
+                                    
+                                    <h2 onclick="type({{$vv->tid}})">{{ $vv->gtname }}</h2>
                                     @foreach($vv['sub'] as $kkk=>$vvv)
-                                    <form action="/home/goods" method="get" style="display:inline-block;">
-                                        <input type="hidden" name="tid" value="{{ $vvv->tid }}">
-                                        <button id="butt" style="outline:none;border:none;list-style:none;background: none;cursor:pointer;">{{ $vvv->gtname }}</button>
-                                    </form>
+                                    <a onclick="typex({{$vvv->tid}})">{{ $vvv->gtname }}</a>|
                                     @endforeach
                                 </div>
+                            @endforeach
+
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="/o/images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="/o/images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="/o/images/catex3.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="/o/images/catex2.jpg" width="236" height="200" /></a>
                             </div>
-                            @endforeach
                         </div>
-                        
                     </li>
                     <a href="" hidden>{{ $num -= 40 }}</a>
                     @endforeach     
-                </ul>            
+                </ul>
+                
             </div>
         </div>  
+        <script type="text/javascript">
+        function type(tid){
+            location.href = "/home/goods/?tid="+tid;
+        }
+        function typex(tid){
+            location.href = "/home/goods/?tid="+tid;
+        }
+        </script>
         <!--End 商品分类详情 End-->
         <ul class="menu_r">                              
             <li style="margin-left: 10px"><a href="/home/index">首页</a></li>
@@ -293,25 +301,25 @@
         <div class="b_btm">
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="/o/images/b1.png" width="62" height="62" /></td>
+                <td width="72"><img src="/o/images/footer1.gif" width="62" height="62" /></td>
                 <td><h2>正品保障</h2>正品行货  放心购买</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="/o/images/b2.png" width="62" height="62" /></td>
+                <td width="72"><img src="/o/images/footer2.gif" width="62" height="62" /></td>
                 <td><h2>满38包邮</h2>满38包邮 免运费</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="/o/images/b3.png" width="62" height="62" /></td>
+                <td width="72"><img src="/o/images/footer3.gif" width="62" height="62" /></td>
                 <td><h2>天天低价</h2>天天低价 畅选无忧</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="/o/images/b4.png" width="62" height="62" /></td>
+                <td width="72"><img src="/o/images/footer4.gif" width="62" height="62" /></td>
                 <td><h2>准时送达</h2>收货时间由你做主</td>
               </tr>
             </table>
@@ -320,38 +328,44 @@
     <div class="b_nav">
         <dl>                                                                                            
             <dt><a href="#">新手上路</a></dt>
-            <dd><a href="#">售后流程</a></dd>
-            <dd><a href="#">购物流程</a></dd>
-            <dd><a href="#">订购方式</a></dd>
-            <dd><a href="#">隐私声明</a></dd>
-            <dd><a href="#">推荐分享说明</a></dd>
+            @foreach($getColumn as $k=>$v)
+                @if($v->sort==1)
+                <dd><a href="#">{{ $v->title }}</a></dd>
+                @endif
+            @endforeach
         </dl>
         <dl>
             <dt><a href="#">配送与支付</a></dt>
-            <dd><a href="#">货到付款区域</a></dd>
-            <dd><a href="#">配送支付查询</a></dd>
-            <dd><a href="#">支付方式说明</a></dd>
+            @foreach($getColumn as $k=>$v)
+                @if($v->sort==2)
+                <dd><a href="#">{{ $v->title }}</a></dd>
+                @endif
+            @endforeach
         </dl>
         <dl>
             <dt><a href="#">会员中心</a></dt>
-            <dd><a href="#">资金管理</a></dd>
-            <dd><a href="#">我的收藏</a></dd>
-            <dd><a href="#">我的订单</a></dd>
+            @foreach($getColumn as $k=>$v)
+                @if($v->sort==3)
+                <dd><a href="#">{{ $v->title }}</a></dd>
+                @endif
+            @endforeach
         </dl>
         <dl>
             <dt><a href="#">服务保证</a></dt>
-            <dd><a href="#">退换货原则</a></dd>
-            <dd><a href="#">售后服务保证</a></dd>
-            <dd><a href="#">产品质量保证</a></dd>
+            @foreach($getColumn as $k=>$v)
+                @if($v->sort==4)
+                <dd><a href="#">{{ $v->title }}</a></dd>
+                @endif
+            @endforeach
         </dl>
         <dl>
             <dt><a href="#">联系我们</a></dt>
             <dd><a href="#">网站故障报告</a></dd>
-            <dd><a href="#">购物咨询</a></dd>
+            <dd><a href="#">购物资讯</a></dd>
             <dd><a href="#">投诉与建议</a></dd>
         </dl>
         <div class="b_tel_bg">
-            <a href="#" class="b_sh1">新浪微博</a>            
+            <a href="#" class="b_sh1">新浪微博</a>       
             <a href="#" class="b_sh2">腾讯微博</a>
             <p>
             服务热线：<br />
@@ -359,7 +373,7 @@
             </p>
         </div>
         <div class="b_er">
-            <div class="b_er_c"><img src="/o/images/er.gif" width="118" height="118" /></div>
+            <div class="b_er_c"><img src="/o/images/wxid.jpg" width="118" height="118" /></div>
             <img src="/o/images/ss.png" />
         </div>
     </div>    

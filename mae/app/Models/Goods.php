@@ -11,7 +11,6 @@ class Goods extends Model
     //商品表id
     public $primaryKey='gid';
     //不验证时间
-    public $timestamps = false; 
     protected $dateFormat = 'U';
     //建立对商品图片表的一对多
     public function goodspic()

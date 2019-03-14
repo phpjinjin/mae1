@@ -5,7 +5,7 @@
 
 	<div class="text-c">
 		<form action="/admin/goods" method="get">
-			<input type="text" name="search" id="" placeholder=" 图片名称" style="width:250px" class="input-text">
+			<input type="text" name="search" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
 			<button type="submit" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜商品</button>
 		</form>
 		
@@ -57,7 +57,7 @@
 					<td><input name="" type="checkbox" value=""></td>
 					<td class="sorting_1">{{ $v->gid }}</td>
 					<td style="width:20px">{{ $v->gname }}</td>
-					<td>{{ $v->tid }}</td>
+					<td>{{ $v->goodstype->gtname }}</td>
 					<td>{{ $v->price }} ¥</td>
 					<td><a href="javascript:;" onclick="picture_edit('图库编辑','picture-show.html','10001')"><img class="img-thumbnail" src="{{ asset('uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="77" height="77"></a></td>
 					<td class="text-c">{{ $v->color }}</td>

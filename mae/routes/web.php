@@ -220,7 +220,8 @@ Route::resource('admin/rbac/roles','Admin\NodesController');
 
 
 
-
+//栏目管理
+Route::resource('/admin/column','Admin\ColumnController');
 
 //添加类别子分类
 Route::get('/admin/cate/create/{id}','Admin\CateController@create');

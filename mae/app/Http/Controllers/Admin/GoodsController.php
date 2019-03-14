@@ -38,9 +38,6 @@ class GoodsController extends Controller
 
         $tiao = Goods::count();
         $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-       foreach ($data as $k=>$v){
-           $v->tid = $v->goodstype->gtname;
-        }
         return view('admin.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }
 
@@ -81,7 +78,8 @@ class GoodsController extends Controller
         $goods->price = $data['price'];
         $goods->stock = $data['stock'];
         $goods->color = $data['color'];
-        
+        $goods->salecnt = 0;
+        $goods->hot = 0;
         $res1 = $goods->save();
         $gid = $goods->gid;
         //添加属性

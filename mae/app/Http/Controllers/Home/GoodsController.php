@@ -13,7 +13,7 @@ use App\Models\Cate;
 class GoodsController extends Controller
 {
     /**
-     * 分配类别
+     * 共享类别
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +27,16 @@ class GoodsController extends Controller
         }
         return $arr;
     }
-
+    /**
+     * 浏览量排行
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function good_Hot()
+    {
+        $arr = Goods::orderBy('hot','desc')->get();
+        return $arr;
+    }
 
     /**
      * Display a listing of the resource.
@@ -36,17 +45,49 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-        $count = $request->input('count',5);
+        $count = $request->input('count',16);
         $search = $request->input('search','');
         $tid = $request->input('tid','');
+        $msg = $request->input('msg','');
+        //判断是否存在类别搜索
         if($tid === ""){
-            $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
-            $tiao = $data->count();
+            //根据条件排序
+            switch ($msg)
+            {
+                case "price1":
+                
+                    $data = Goods::where('gname','like','%'. $search.'%')->orderBy('price','asc')->paginate($count);
+                    $tiao = $data->count();
+                    break;
+
+                case "price2":
+                
+                    $data = Goods::where('gname','like','%'. $search.'%')->orderBy('price','desc')->paginate($count);
+                    $tiao = $data->count();
+                    break;
+
+                case "salecnt":
+                
+                    $data = Goods::where('gname','like','%'. $search.'%')->orderBy('salecnt','desc')->paginate($count);
+                    $tiao = $data->count();
+                    break;
+
+                case "time":
+                
+                    $data = Goods::where('gname','like','%'. $search.'%')->orderBy('created_at','desc')->paginate($count);
+                    $tiao = $data->count();
+                    break;
+
+                default:
+                
+                    $data = Goods::where('gname','like','%'. $search.'%')->paginate($count);
+                    $tiao = $data->count();
+            }
         }else{
             $data = Goods::where('tid',$tid)->paginate($count);
             $tiao = $data->count();
         }
-
+        
         return view('home.goods.index',['goods'=>$data,'request'=>$request->all(),'tiao'=>$tiao]);
     }
     /**
@@ -79,10 +120,13 @@ class GoodsController extends Controller
     public function show($id)
     {
         $goods = Goods::where('gid',$id)->first();
+        //浏览量递增
+        $goods->hot += 1;
+        $goods->save();
         $pic = $goods->goodspic;
         $val = $goods->goodsval;
         $pics = count($pic);
-        
+
         return view('home.goods.show',['goods'=>$goods,'pic'=>$pic,'val'=>$val,'pics'=>$pics]);
         
     }

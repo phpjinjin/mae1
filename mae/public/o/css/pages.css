@@ -24,7 +24,8 @@
         padding: 6px 12px;
         margin-left: -1px;
         line-height: 1.42857143;
-        color: #337ab7;
+
+        color: #D97593;
         text-decoration: none;
         background-color: #fff;
         border: 1px solid #ddd;
@@ -35,7 +36,8 @@
         padding: 6px 12px;
         margin-left: -1px;
         line-height: 1.42857143;
-        color: #337ab7;
+        color: #D97593;
+
         text-decoration: none;
         background-color: #fff;
         border: 1px solid #ddd;
@@ -49,8 +51,9 @@
         z-index: 3;
         color: #fff;
         cursor: default;
-        background-color: #337ab7;
-        border-color: #337ab7;
+        background-color: #D97593;
+        border-color: #D97593;
+
     }
     .pagination>li>a:hover{
         z-index: 2;
