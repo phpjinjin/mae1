@@ -180,15 +180,23 @@ Route::group(['middleware'=>'hlogin'],function(){
 
 
 
-
+Route::group(['middleware'=>'alogin'],function(){
 // 网站管理
 Route::get('admin/web','Admin\Webcontroller@index');
 Route::get('admin/web/edit','Admin\Webcontroller@edit');
 Route::post('admin/web/update','Admin\Webcontroller@update');
 // 友情链接
 Route::resource('admin/link','Admin\linkcontroller');
+//后台权限管理 
+Route::get('admin/rbac/roles/nodeadd','Admin\NodesController@nodeadd');
+Route::post('admin/rbac/roles/insert','Admin\NodesController@insert');
+Route::resource('admin/rbac/roles','Admin\NodesController');
+});                                                           
+
 // 前台首页路由
 Route::resource('home/index','Home\HomeController');
+
+Route::group(['middleware'=>'hlogin'],function(){
 // 前台收藏页
 Route::get('home/collect/add/{gid}','Home\CollectController@add');//加入收藏
 Route::get('home/collect/delete/{id}','Home\CollectController@delete');
@@ -201,11 +209,8 @@ Route::get('home/address/update/{id}','Home\AddressController@update');
 Route::get('home/address/delete/{id}','Home\AddressController@delete');
 
 Route::get('home/address/moren/{id}','Home\AddressController@moren');
-Route::resource('home/address','Home\AddressController');
-//后台权限管理 
-Route::get('admin/rbac/roles/nodeadd','Admin\NodesController@nodeadd');
-Route::post('admin/rbac/roles/insert','Admin\NodesController@insert');
-Route::resource('admin/rbac/roles','Admin\NodesController');                                                                       
+Route::resource('home/address','Home\AddressController');          
+});   
 
 
 
@@ -217,33 +222,28 @@ Route::resource('admin/rbac/roles','Admin\NodesController');
 
 
 
-
-
-
-//栏目管理
-Route::resource('/admin/column','Admin\ColumnController');
-
-//添加类别子分类
-Route::get('/admin/cate/create/{id}','Admin\CateController@create');
-//类别管理
-Route::resource('/admin/cate','Admin\CateController');
-
-//属性管理 
-Route::get('/admin/goodval/dele/{id}','Admin\GoodvalController@dele');
-Route::resource('/admin/goodval','Admin\GoodvalController');
-
-//商品管理
-
-Route::get('/admin/goods/dele/{id}','Admin\GoodsController@dele');
-Route::resource('/admin/goods','Admin\GoodsController');
-
-//轮播图管理
-Route::resource('/admin/slid','Admin\SlidController');
+Route::group(['middleware'=>'alogin'],function(){
+	//栏目管理
+	Route::resource('/admin/column','Admin\ColumnController');
+	//添加类别子分类
+	Route::get('/admin/cate/create/{id}','Admin\CateController@create');
+	//类别管理
+	Route::resource('/admin/cate','Admin\CateController');
+	//属性管理 
+	Route::get('/admin/goodval/dele/{id}','Admin\GoodvalController@dele');
+	Route::resource('/admin/goodval','Admin\GoodvalController')
+	//商品管理
+	Route::get('/admin/goods/dele/{id}','Admin\GoodsController@dele');
+	Route::resource('/admin/goods','Admin\GoodsController');
+	//轮播图管理
+	Route::resource('/admin/slid','Admin\SlidController');
+});
 
 //前台商品展示
 Route::get('/home/goods/catetype/{tid}','Home\GoodsController@catetype');
 Route::resource('/home/goods','Home\GoodsController');
 
+Route::group(['middleware'=>'hlogin'],function(){
 //加入购物车
 Route::get('/home/carts/add/{cnt}/{gid}','Home\CartsController@add');
 //减商品数量
@@ -254,4 +254,5 @@ Route::get('/home/carts/jia/{cid}','Home\CartsController@jia');
 Route::get('/home/carts/dele/{id}','Home\CartsController@dele');
 //购物车
 Route::resource('/home/carts','Home\CartsController');
+});
 
