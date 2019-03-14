@@ -16,7 +16,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        //显示模板加载视图
         return view('home.login.index');
     }
 
@@ -40,17 +40,25 @@ class LoginController extends Controller
     {   
         //接收数据
         $data = $request->only(['account','password']);
+        //通过账户获取数据
         $user = users::where('account',$data['account'])->first();
+        //获取用户表id
         $id = $user->uid;
+        // 通过外键获取详情表数据
         $userdetails = UsersDetail::where('user_id',$id)->first();
+        //获取用户状态
         $status = $userdetails->status;
+        //判断用户是否完成激活
         if($status == 0){
             return redirect('/home/login')->with('error','未完成激活,请激活后再登录');
         }
+        //判断账号是否存在
         if(!$user){           
             return redirect('/home/login')->with('error','账号错误,请重新输入');
             }   
+         //通过Hash比对 判断密码是否正确   
         if(Hash::check($data['password'],$user->password)){
+            //存储session值
             session(['login'=>true,'id'=>$user->uid,'account'=>$data['account']]);
             // echo session(['login','id']);
             return redirect('/home/index')->with('success','登录成功');   
@@ -107,7 +115,8 @@ class LoginController extends Controller
      * @return [type] [description]
      */
     public function exit()
-    {
+    {   
+        //重新复制session值
         session(['login'=>null,'id'=>'','account'=>'']);
         return redirect('/home/index');
     }

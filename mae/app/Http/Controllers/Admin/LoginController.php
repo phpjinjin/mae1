@@ -15,7 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        //显示模板加载视图
         return view('admin.login.index');
     }
 
@@ -36,14 +36,17 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        //接收数据
         $data = $request->except('_token');
+        //通过账号查询数据
         $user = Admins_users::where('account',$data['account'])->first();
-        
+        //判断该账号是否存在
         if(!$user){           
             return redirect('/admin/login')->with('error','账号错误,请重新输入');
             }   
         if(Hash::check($data['password'],$user->password)){
+            //存储一个登陆的session值
             session(['alogin'=>true,'id'=>$user->aid]);
             return redirect('/admin')->with('success','登录成功');   
        } 
@@ -101,7 +104,7 @@ class LoginController extends Controller
      * @return [type] [description]
      */
      public function exit()
-    {
+    {   //重新赋值session值
         session(['login'=>null,'id'=>'']);
         return redirect('/admin/login');
     }
