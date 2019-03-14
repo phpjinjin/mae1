@@ -64,12 +64,13 @@
 				<span class="select-box">
 				<select name="color" class="select">
 					<option value="1">红色</option>
-					<option value="2">橙色</option>
-					<option value="2">黄色</option>
-					<option value="2">绿色</option>
-					<option value="2">青色</option>
-					<option value="2">靛色</option>
-					<option value="2">紫色</option>
+					<option value="2">粉色</option>
+					<option value="3">黄色</option>
+					<option value="4">绿色</option>
+					<option value="5">青色</option>
+					<option value="6">蓝色</option>
+					<option value="7">紫色</option>
+					<option value="8">白色</option>
 				</select>
 				</span>
 			</div>

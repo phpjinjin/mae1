@@ -179,7 +179,16 @@
 					<li><a data-href="/admin/slid" data-title="轮播列表" href="javascript:void(0)">轮播列表</a></li>
 			</ul>
 		</dd>
-	</dl>	
+	</dl>
+	<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 栏目管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="/admin/column/create" data-title="添加栏目" href="javascript:void(0)">添加栏目</a></li>
+					<li><a data-href="/admin/column" data-title="浏览栏目" href="javascript:void(0)">浏览栏目</a></li>
+			</ul>
+		</dd>
+	</dl>
 		<dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe616;</i> 友情链接<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>

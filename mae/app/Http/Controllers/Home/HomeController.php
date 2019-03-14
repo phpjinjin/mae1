@@ -20,21 +20,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //获取轮播图信息
-        $slid = Slid::get();
-
-        //
-        //return 2;
         $webs = Webs::get();
         $status = $webs[0]->status;
-        
-        // dd($status);
         if($status == 1){
-            return view('home.index.home',['slid'=>$slid]);
+            return view('home.index.home');
         }
-        // else{
-        //     return view('');
-        // }
 
     }
 

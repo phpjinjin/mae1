@@ -158,4 +158,10 @@ class SlidController extends Controller
             return back()->with('error','删除失败');
         }
     }
+
+    public static function getSlid(){
+        //获取轮播图信息
+        $slid = Slid::get();
+        return $slid;
+    }
 }

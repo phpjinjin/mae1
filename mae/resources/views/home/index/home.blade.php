@@ -11,9 +11,10 @@
         <div class="banner">        
             <div class="top_slide_wrap">
                 <ul class="slide_box bxslider">
-                    @foreach($slid as $k=>$v)
+                    @foreach($getSlid as $k=>$v)
+                    @if($v->nid==1)
                     <li><a href="/home/goods/{{ $v->surl }}"><img src="{{ asset('uploads/slid/'.$v->simg) }}" width="740" height="401" /></a></li>
-                    
+                    @endif
                     @endforeach
                 </ul>   
                 <div class="op_btns clearfix">

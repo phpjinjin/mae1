@@ -48,7 +48,7 @@
             <td align="center">￥<sapn style="color:#ff4e00;" id="price{{$v->cid}}">{{ $v->cart_good[0]->price*$v->cnt  }}</sapn></td>
             
             
-            <td align="center"><a onclick="dele({{ $v->cid }})">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
+            <td align="center"><a onclick="dele({{ $v->cid }})">删除</a>&nbsp; &nbsp;<a id="shou{{$v->gid}}" onclick="shou({{ $v->gid }})">收藏</a></td>
           </tr>
          @endforeach
          
@@ -183,6 +183,18 @@
 					}
 					$('#pricesum').text(sum);
 				}
+
+				 function shou(gid){
+		            var url = '/home/collect/add/'+gid;
+		            $.get(url , function(res){
+		                if(res){
+		                    layer.msg('操作成功',{icon: 1});
+		                    $('#shou'+gid).text(res);
+		                }else{
+		                    layer.msg(res,{icon: 2});
+		                }
+		            });
+		        }
             </script>
           <tr height="70">
           	<td colspan="6" style="font-family:'Microsoft YaHei'; border-bottom:0;">
