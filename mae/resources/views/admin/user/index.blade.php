@@ -90,9 +90,9 @@
 					<form action="/admin/user/{{$v->aid}}" method="post" style="display:inline-block";>
 						{{csrf_field()}}
 						{{method_field('DELETE')}}
-						<input type="submit" value="删除"  class="btn btn-danger btn-xs dropdown-toggle">		
-						
+						<input type="submit" value="删除"  class="btn btn-danger btn-xs dropdown-toggle">
 					</form>
+					<input type="submit" value="角色"  class="btn btn-warning btn-xs dropdown-toggle">
 				</td>
 		 	
 		</tr>

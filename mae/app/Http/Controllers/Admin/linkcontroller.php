@@ -17,8 +17,9 @@ class linkcontroller extends Controller
     public function index(Request $request)
     {
         //
+        $data = $request->except(['_token']);
         //默认一页显示的数据条数
-        $res = $request->input('count','5');
+        $res = $data->input('count','5');
         //取link表的数据总数
         $count = Link::count();
         //获取请求的参数
