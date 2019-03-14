@@ -25,7 +25,7 @@
 			链接图标：
 		</label>
 		<label class="form-label col-xs-1" for="file">
-			 &nbsp; &nbsp;<img src="{{ asset('uploads/link/'.$data[0]->limg) or ''  }}" id="show" width="100"  onclick="pic()">
+			 &nbsp; &nbsp;<img src="{{ asset( 'uploads/link/'.$data[0]->limg) }}" id="show" width="100"  onclick="pic()">
 		</label>
 		<div class="formControls col-xs-6 col-sm-6">
 			<div class="uploader-thum-container">

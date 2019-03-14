@@ -1,7 +1,20 @@
 @extends('home.index.content')
 @section('content')
 @section('menu')
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
 @endsection
+
+@if (session('gologin'))
+    <script type="text/javascript">
+            layer.alert('请先前往登录', {
+            skin: 'layui-layer-lan'
+            ,closeBtn: 0
+            ,anim: 1 //动画类型
+          });
+    </script>
+@endif
 @section('none')
 <div class="leftNav">
 @endsection

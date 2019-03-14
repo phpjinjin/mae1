@@ -7,6 +7,7 @@
 @section('menu')
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
 <script type="text/javascript" src="\d\lib\jquery\1.9.1\jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="/o/css/pages.css">
 <style type="text/css">
     #cart{
         text-decoration: none;
@@ -15,7 +16,7 @@
     #cart:hover{
         font-weight:bold;
     }
-</style>
+    </style>
 @endsection
 @section('none')
 <div class="leftNav none">
@@ -114,10 +115,10 @@
             var url = '/home/collect/add/'+gid;
             $.get(url , function(res){
                 if(res){
-                    layer.msg('操作成功',{icon: 1});
+                    layer.msg('操作成功');
                     $('#shou'+gid).text(res);
                 }else{
-                    layer.msg(res,{icon: 2});
+                    layer.msg(res);
                 }
             });
         }

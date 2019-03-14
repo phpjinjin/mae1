@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Webs;
+use App\Http\Requests\WebRequest;
 use DB;
 class Webcontroller extends Controller
 {
@@ -23,7 +24,7 @@ class Webcontroller extends Controller
     	$webs = Webs::where('wid','2')->get();
     	return view('admin.web.edit',['webs'=>$webs]);
     }
-    public function update(Request $request)
+    public function update(WebRequest $request)
     {
     	$wid = $request['wid'];
 

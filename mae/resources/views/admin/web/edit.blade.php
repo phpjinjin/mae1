@@ -1,13 +1,14 @@
 @extends('admin.public.ifram')
 	<!-- 显示错误信息 -->
 	@if (count($errors) > 0)
-	    <div class="mws-form-message error">
-	        <ul>
+	    <div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			 <ul>
 	            @foreach ($errors->all() as $error)
 	                <li>{{ $error }}</li>
 	            @endforeach
 	        </ul>
-	    </div>
+		</div>
 	@endif
 	<h2 align="center" style="color: #aaa;">修改网站信息</h2>
 		<form action="/admin/web/update" method="post" class="form form-horizontal" enctype="multipart/form-data">

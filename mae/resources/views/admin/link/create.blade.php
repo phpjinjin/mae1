@@ -1,4 +1,14 @@
 @extends('admin.public.ifram')
+@if (count($errors) > 0)
+    <div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		 <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+	</div>
+@endif
 <h1 align="center" style="color: #aaa">添加友情链接</h1>
 <form action="/admin/link" method="post" class="form form-horizontal" enctype="multipart/form-data">
 	{{csrf_field()}}
