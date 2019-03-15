@@ -59,7 +59,7 @@
               <input style="width: 90px;height: 25px;line-height: 25px;overflow: hidden;background-color: #d97593;color: #FFF;font-size: 12px;font-family: '宋体';text-align: center;margin-left: 10px;border: 0;cursor: pointer;float: right; margin-right: 20px;" type="submit" value="确认修改" class="add_b" id="btn_submt">
             </p> 
             </form>
-        </div>
+        
   
 <script type="text/javascript">
   $(function (){

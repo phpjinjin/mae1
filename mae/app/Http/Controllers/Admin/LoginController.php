@@ -61,6 +61,9 @@ class LoginController extends Controller
             if($v->aname == 'edit'){
                 $arr[$v->cname][] = 'update';
             }
+            if($v->aname == 'nodeadd'){
+                $arr[$v->cname][] = 'insert';
+            }
         }
         //赋值后台首页
         $arr['IndexController'][] = 'index';
