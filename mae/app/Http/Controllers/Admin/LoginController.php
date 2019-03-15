@@ -125,7 +125,9 @@ class LoginController extends Controller
      */
      public function exit()
     {   //重新赋值session值
-        session(['login'=>null,'id'=>'']);
-        return redirect('/admin/login');
+        // session(['login'=>null,'id'=>'','admin_nodes_type'=>[]]);
+          
+       session()->flush();
+       return redirect('/admin/login');
     }
 }
