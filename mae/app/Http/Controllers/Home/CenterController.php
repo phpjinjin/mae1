@@ -184,7 +184,7 @@ class CenterController extends Controller
     public function save(Request $request)
     {   
 
-        /获取用户id
+        //获取用户id
         $id = session('id');
         //通过id查询用户表
         $users = Users::find($id);

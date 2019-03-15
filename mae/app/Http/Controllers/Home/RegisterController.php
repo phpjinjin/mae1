@@ -76,7 +76,7 @@ class RegisterController extends Controller
         $usersdetail = new UsersDetail;
         //使用户表与详情表通过外键关联
         $usersdetail->user_id = $uid;
-        将表单传过来的值赋值给模型
+        // 将表单传过来的值赋值给模型
         $usersdetail->email = $data['email'];
         //生成用户的秘钥
         $usersdetail->token =str_random(60);
@@ -90,7 +90,7 @@ class RegisterController extends Controller
             Mail::send('home.register.send',['token'=>$usersdetail->token,'id'=> $users->uid,'email' =>$data['email']],function($m) use($usersdetail) {
                  $m->to($usersdetail->email)->subject('你好呀!!');
             });
-            dd('注册成功,请尽快完成激活');                
+            return redirect('home/login')->with('success','注册成功');              
         }else{
             DB::rollBack();
             return back()->with('error','注册失败');
