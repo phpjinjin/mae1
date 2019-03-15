@@ -16,7 +16,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        //显示模板加载视图
         return view('admin.login.index');
     }
 
@@ -37,14 +37,18 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        //接收数据
         $data = $request->except('_token');
+        //通过账号查询数据
         $user = Admins_users::where('account',$data['account'])->first();
-        
+        //判断该账号是否存在
         if(!$user){           
             return redirect('/admin/login')->with('error','账号错误,请重新输入');
             }   
+
         if(!Hash::check($data['password'],$user->password)){
+
             return redirect('/admin/login')->with('error','密码错误,请重新输入');  
         }
 
@@ -58,6 +62,9 @@ class LoginController extends Controller
             }
             if($v->aname == 'edit'){
                 $arr[$v->cname][] = 'update';
+            }
+            if($v->aname == 'nodeadd'){
+                $arr[$v->cname][] = 'insert';
             }
         }
         //赋值后台首页
@@ -119,7 +126,7 @@ class LoginController extends Controller
      * @return [type] [description]
      */
      public function exit()
-    {
+    {   //重新赋值session值
         session(['login'=>null,'id'=>'']);
         return redirect('/admin/login');
     }

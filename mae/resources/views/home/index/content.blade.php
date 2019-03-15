@@ -202,7 +202,6 @@
             <input type="text" value="" class="s_ipt" placeholder="请输入商品关键字" name="search"/>
             <input type="submit" value="搜索" class="s_btn" />
         </form>                      
-        <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
     <div class="i_car">
         <div class="car_t"><a href="/home/carts">购物车</a> [ <span style="color:#FF4466;">{{ $carts_count->tiao }}</span> ]</div>
@@ -286,10 +285,10 @@
         <ul class="menu_r">                              
             <li style="margin-left: 10px"><a href="/home/index">首页</a></li>
             <li style="margin-left: 10px"><a href="/home/goods">全部商品</a></li>
-            <li style="margin-left: 10px"><a href="Food.html">热卖商品</a></li>
-            <li style="margin-left: 10px"><a href="Fresh.html">精品推荐</a></li>
-            <li style="margin-left: 10px"><a href="HomeDecoration.html">店家甄选</a></li>
-            <li style="margin-left: 10px"><a href="SuitDress.html">猜你喜欢</a></li>
+            <li style="margin-left: 10px"><a href="#xianshi">限时活动</a></li>
+            <li style="margin-left: 10px"><a href="#tuijian">精品推荐</a></li>
+            <li style="margin-left: 10px"><a href="/home/article">店家甄选</a></li>
+            <li style="margin-left: 10px"><a href="#xihuan">猜你喜欢</a></li>
         </ul>
         <div class="m_ad"></div>
     </div>

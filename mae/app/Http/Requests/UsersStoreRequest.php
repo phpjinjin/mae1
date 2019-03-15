@@ -45,7 +45,7 @@ class UsersStoreRequest extends FormRequest
         'password.regex'=>'密码格式不正确',
         'password.required'=>'密码必填',
         'repassword.required'=>'确认密码必填',
-        'repassword.same'=>'次密码不一致',
+        'repassword.same'=>'两次密码不一致',
         'pname.required' => '昵称必填',
         'uname.required' => '真实姓名必填',
         'sex.required' => '性别必填',

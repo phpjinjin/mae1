@@ -163,10 +163,11 @@
         </div>
     </div>    
     <!--End 盆栽 End-->
-    <!--Begin 精美饰品 Begin-->
+    <a name="tuijian"></a>
+    <!--Begin 精品推荐 Begin-->
     <div class="i_t mar_10">
         <span class="floor_num">3F</span>
-        <span class="fl">精美饰品</span>
+        <span class="fl">精品推荐</span>
         <span class="i_mores fr">  
             <!-- 遍历鲜花分类 -->
             <a href="#">进口咖啡</a>&nbsp; &nbsp; &nbsp;
@@ -214,9 +215,10 @@
             </ul>
         </div>
     </div>    
-    <!--End 精美饰品 End-->
+    <!--End 精品推荐 End-->
     
 <!--Begin 限时特卖 Begin-->
+<a name="xianshi"></a>
     <div class="i_t mar_10">
         <span class="fl">美文 <b>·</b> 限时活动</span>
     </div>
@@ -278,6 +280,7 @@
     <!--End 限时特卖 End-->
 
     <!--Begin 猜你喜欢 Begin-->
+    <a name="xihuan"></a>
     <div class="i_t mar_10">
         <span class="fl">猜你喜欢</span>
     </div>    
