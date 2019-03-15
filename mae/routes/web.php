@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 //后台登录页面
+
 Route::get('admin/exit','Admin\LoginController@exit');
 Route::resource('admin/login','Admin\LoginController');
 
-Route::group(['middleware'=>'alogin'],function(){
+Route::group(['middleware'=>['alogin','rbac']],function(){
 	//后台首页路由
 	Route::get('/admin','Admin\IndexController@index');
 	//后台用户管理
+
+	Route::get('admin/user/role/{id}','Admin\UserController@role');
+	Route::post('admin/user/updaterole/{id}','Admin\UserController@updaterole');
 	Route::resource('admin/user','Admin\UserController');
 	//后台前台用户页面
 	Route::resource('admin/users','Admin\UsersController');
@@ -106,7 +110,7 @@ Route::get('welcome.blade.php',function(){
 
 
 
-Route::group(['middleware'=>'alogin'],function(){
+Route::group(['middleware'=>['alogin','rbac']],function(){
 	//后台 广告表删除路由
 	Route::get('/admin/adver/adver/{id}','Admin\AdverController@delete');
 	//后台 广告表
@@ -179,35 +183,42 @@ Route::group(['middleware'=>'hlogin'],function(){
 
 
 
-
-Route::group(['middleware'=>'alogin'],function(){
+// 后台中间件验证登录
+Route::group(['middleware'=>['alogin','rbac']],function(){
 // 网站管理
 Route::get('admin/web','Admin\Webcontroller@index');
 Route::get('admin/web/edit','Admin\Webcontroller@edit');
 Route::post('admin/web/update','Admin\Webcontroller@update');
 // 友情链接
 Route::resource('admin/link','Admin\linkcontroller');
-//后台权限管理 
+// 后台权限管理 
 Route::get('admin/rbac/roles/nodeadd','Admin\NodesController@nodeadd');
 Route::post('admin/rbac/roles/insert','Admin\NodesController@insert');
 Route::resource('admin/rbac/roles','Admin\NodesController');
 });                                                           
 
+// 403
+Route::get('403',function(){
+	return view('admin.rbac.403');
+});
+
 // 前台首页路由
 Route::resource('home/index','Home\HomeController');
 
-Route::group(['middleware'=>'hlogin'],function(){
 // 前台收藏页
 Route::get('home/collect/add/{gid}','Home\CollectController@add');//加入收藏
+// 前台中间键验证登录
+Route::group(['middleware'=>'hlogin'],function(){
+// 收藏
 Route::get('home/collect/delete/{id}','Home\CollectController@delete');
 Route::get('home/collect/{id}','Home\CollectController@store');
 Route::resource('home/collect','Home\CollectController');
+
 // 前台收货地址
 Route::get('home/address/edit/{id}','Home\AddressController@edit');
 Route::post('home/address/store','Home\AddressController@store');
 Route::get('home/address/update/{id}','Home\AddressController@update');
 Route::get('home/address/delete/{id}','Home\AddressController@delete');
-
 Route::get('home/address/moren/{id}','Home\AddressController@moren');
 Route::resource('home/address','Home\AddressController');          
 });   
@@ -222,7 +233,7 @@ Route::resource('home/address','Home\AddressController');
 
 
 
-Route::group(['middleware'=>'alogin'],function(){
+Route::group(['middleware'=>['alogin','rbac']],function(){
 	//栏目管理
 	Route::resource('/admin/column','Admin\ColumnController');
 	//添加类别子分类

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admins_users;
 use Hash;
+use DB;
 class LoginController extends Controller
 {
     /**
@@ -43,12 +44,29 @@ class LoginController extends Controller
         if(!$user){           
             return redirect('/admin/login')->with('error','账号错误,请重新输入');
             }   
-        if(Hash::check($data['password'],$user->password)){
-            session(['alogin'=>true,'id'=>$user->aid]);
-            return redirect('/admin')->with('success','登录成功');   
-       } 
+        if(!Hash::check($data['password'],$user->password)){
             return redirect('/admin/login')->with('error','密码错误,请重新输入');  
-        
+        }
+
+        //获取当前的权限
+        $admin_nodes = DB::select('select n.cname,n.aname from nodes as n,user_role as ur,role_node as rn where ur.userid = '.$user->aid.' and ur.roleid = rn.roleid and rn.nodeid = n.nid');
+        $arr = [];
+        foreach($admin_nodes as $k => $v){
+            $arr[$v->cname][] = $v->aname;
+            if($v->aname == 'create'){
+                $arr[$v->cname][] = 'store';
+            }
+            if($v->aname == 'edit'){
+                $arr[$v->cname][] = 'update';
+            }
+        }
+        //赋值后台首页
+        $arr['IndexController'][] = 'index';
+        //将获取到的权限 压入到session
+        session(['admin_nodes_type'=>$arr]);
+
+        session(['alogin'=>true,'id'=>$user->aid]);
+        return redirect('/admin')->with('success','登录成功');
     }
 
     /**
