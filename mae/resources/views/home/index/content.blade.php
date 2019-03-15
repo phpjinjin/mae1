@@ -150,7 +150,7 @@
             @if(  session('login') == true)
             </a>&nbsp;<a href="/home/exit">退出</a>&nbsp;|
             @endif
-            <a href="#">个人中心</a>&nbsp;|</span>
+            <a href="/home/center/information">个人中心</a>&nbsp;|</span>
             <span class="ss">
                 <div class="ss_list">
                     收藏夹

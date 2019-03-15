@@ -10,6 +10,38 @@ use App\Models\Admins_users;
 use Hash;
 class UserController extends Controller
 {
+
+    public function role($id)
+    {
+        //获取管理员信息
+        $user = Admins_users::find($id);
+
+        //获取当前管理员的角色id
+        $userid = DB::table('user_role')->select('roleid')->where('userid',$id)->first();
+        //获取所有角色信息
+        $role = DB::table('roles')->OrderBy('rid','asc')->get();
+        return view('admin.user.role',['user'=>$user,'role'=>$role,'userid'=>$userid]);
+    }
+
+    public function updaterole(Request $request, $id)
+    {
+        //获取角色id
+        $rid = $request->input('power');
+        //删除原本的记录
+        DB::table('user_role')->where('userid',$id)->delete();
+        $user = Admins_users::find($id);
+        $user->power = $rid;
+        $user->save();
+        $temp = [
+            'userid'=>$id,
+            'roleid'=>$rid
+        ];
+
+        DB::table('user_role')->insert($temp);
+
+        return redirect('/admin/user')->with('success','修改成功');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,8 +68,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        //获取所有角色
+        $role = DB::table('roles')->OrderBy('rid','asc')->get();
         //加载  后台用户添加页面
-        return view('admin.user.create');
+        return view('admin.user.create',['role'=>$role]);
     }
 
     /**
@@ -64,7 +98,8 @@ class UserController extends Controller
         $users->power = $data['power'];
         //保存提交数据
         $res = $users->save();
-    
+        $temp = [ 'userid' => $users->aid,'roleid' => $users->power];
+        DB::table('user_role')->insert($temp);
         if($res){
             return redirect('/admin/user')->with('success','添加成功');
         }else{

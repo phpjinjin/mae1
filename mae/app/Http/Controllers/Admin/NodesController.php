@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 class NodesController extends Controller
 {
+
+    // select n.cname,n.aname from nodes as n,user_role as ur,role_node as rn where ur.userid = 8 and ur.roleid = rn.roleid and rn.nodeid = n.nid;
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,8 @@ class NodesController extends Controller
     public function index()
     {
         //
-        $role_data = DB::table('roles')->get();
-        $node_data = DB::table('nodes')->get();
+        $role_data = DB::table('roles')->OrderBy('rid','asc')->get();
+        $node_data = DB::table('nodes')->OrderBy('nid','asc')->get();
         
         return view('admin.rbac.index',['role_data'=>$role_data,'node_data'=>$node_data]);
     }
@@ -87,7 +89,17 @@ class NodesController extends Controller
      */
     public function edit($id)
     {
-        //
+        //获取当前的角色
+        $role = DB::table('roles')->where('rid',$id)->first();
+        //获取当前角色的权限节点id
+        $nids = DB::table('role_node')->where('roleid',$id)->select('nodeid')->get();
+        $nid = [];
+        foreach ($nids as $k => $v) {
+            $nid[] = $v->nodeid;
+        }
+        //获取所有的权限节点
+        $nodes = DB::table('nodes')->get();
+        return view('admin.rbac.edit',['role'=>$role,'nodes'=>$nodes,'nid'=>$nid]);
     }
 
     /**
@@ -100,6 +112,17 @@ class NodesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $nids = $request->input('nids');
+        //删除记录
+         DB::table('role_node')->where('roleid',$id)->delete();
+         foreach ($nids as $k => $v) {
+            $temp = [
+                'roleid'=>$id,
+                'nodeid'=>$v
+             ];
+            DB::table('role_node')->insert($temp);
+         }
+         return redirect('/admin/rbac/roles')->with('success','设置成功');
     }
 
     /**

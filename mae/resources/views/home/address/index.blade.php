@@ -1,10 +1,7 @@
-@extends('home.index.content')
-@section('content')
-@section('menu')
-<script type="text/javascript" src="/o/js/n_nav.js"></script>
-<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
-<link rel="stylesheet" type="text/css" href="/o/css/pages.css">
-@endsection
+@extends('home.personal.index')
+
+
+@section('order')
 @if(session('xgcg'))
 <script type="text/javascript">
   layer.msg(' 修改成功');
@@ -28,29 +25,12 @@
 @section('none')
 <div class="leftNav none">
 @endsection
-<div class="i_bg bg_color">
-    <!--Begin 用户中心 Begin -->
-	<div class="m_content">
-   		<div class="m_left">
-            <div class="left_m">
-            	<div class="left_m_t t_bg2">个人中心</div>
-                <ul>
-                	<li><a href="Member_User.html">用户信息</a></li>
-                    <li><a href="/home/collect">我的收藏</a></li>
-                    <li><a href="#">我的评论</a></li>
-                </ul>
-            </div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg1">订单中心</div>
-                <ul>
-                	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="/home/address" class="now">收货地址</a></li>
-                </ul>
-            </div>
-        </div>
-		<div class="m_right" style="width: 979px;">
+
+
+   
             <p></p>
             <div class="mem_tit">收货地址</div>
+
 
             <div class="mem_tit">
                 <a href="/home/address/create"><img src="/o/images/add_ad.gif" /></a>
@@ -98,8 +78,9 @@
             </div>
             @endforeach
         <div style="float:right;margin-right: 25px">{{ $data->appends($res)->links() }}</div>
-        </div>
-    </div>
+        
+
+
     <script type="text/javascript">
       function del(id){
         layer.confirm('确认删除吗？', {
@@ -115,6 +96,8 @@
             }
           });
         });
+
+
 
 
       }

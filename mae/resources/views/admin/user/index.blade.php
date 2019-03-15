@@ -67,20 +67,7 @@
 				</td>
 				<td>{{ $v->phone}}</td>
 				<td>{{ $v->email}}</td>
-				<td>@if( $v->power == 0)
-					超级管理员
-					@elseif($v->power ==
-					 1)
-					总编
-					@elseif($v->power == 2)
-					栏目主辑
-					@else($v->power == 3)
-					栏目编辑
-					@endif
-				
-
-
-				</td>
+				<td>{{ $v->power }}</td>
 				<td>{{$v->created_at}}</td>
 				<td class="td-manage">
 					<a title="修改" href="/admin/user/{{ $v->aid }}/edit" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none">
@@ -92,8 +79,7 @@
 						{{method_field('DELETE')}}
 						<input type="submit" value="删除"  class="btn btn-danger btn-xs dropdown-toggle">
 					</form>
-					<input type="submit" value="角色"  class="btn btn-warning btn-xs dropdown-toggle">
-				</td>
+					<a href="/admin/user/role/{{$v->aid}}" class="btn btn-warning btn-xs dropdown-toggle">角色</a>
 		 	
 		</tr>
 		@endforeach

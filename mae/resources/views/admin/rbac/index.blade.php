@@ -1,4 +1,8 @@
 @extends('admin.public.ifram')
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
+<script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
+
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
 	<nav class="breadcrumb">
@@ -19,6 +23,7 @@
 				<tr>
 					<th>角色ID</th>
 					<th>角色名称</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +31,9 @@
 				<tr>
 					<td>{{ $v->rid }}</td>
 					<td>{{ $v->rname }}</td>
+					<td>
+						<a href="/admin/rbac/roles/{{ $v->rid }}/edit" class="btn btn-danger">权限节点</a>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -57,6 +65,11 @@
 		</table>
 	</form>
 </div>
+@if(session('success'))
+	<script type="text/javascript">
+		layer.msg('设置成功',{icon:1});
+	</script>
+@endif
 <script type="text/javascript">
 	$('.tab').hide();
 	$('.tab:first').show();

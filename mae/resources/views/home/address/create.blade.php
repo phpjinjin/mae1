@@ -1,10 +1,13 @@
-@extends('home.index.content')
-@section('content')
+
+@extends('home.personal.index')
+
+@section('order')
+
 <script type="text/javascript" src="\d\layui-v2.4.5\layui\css\modules\layer\default\layer.css"></script>
 <script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.all.js"></script>
 <script type="text/javascript" src="\d\layui-v2.4.5\layui\layui.js"></script>
 
-@section('menu')
+
 <script type="text/javascript" src="/o/js/n_nav.js"></script>
 <link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
 <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
@@ -12,31 +15,7 @@
 <script src="/o/js/distpicker.data.js"></script>
 <script src="/o/js/distpicker.js"></script>
 <script src="/o/js/main.js"></script>
-@endsection
-@section('none')
-<div class="leftNav none">
-@endsection
-<div class="i_bg bg_color">
-    <!--Begin 用户中心 Begin -->
-	<div class="m_content">
-   		<div class="m_left">
-            <div class="left_m">
-            	<div class="left_m_t t_bg2">个人中心</div>
-                <ul>
-                	<li><a href="Member_User.html">用户信息</a></li>
-                    <li><a href="/home/collect">我的收藏</a></li>
-                    <li><a href="#">我的评论</a></li>
-                </ul>
-            </div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg1">订单中心</div>
-                <ul>
-                	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="/home/address" class="now">收货地址</a></li>
-                </ul>
-            </div>
-        </div>
-		<div class="m_right" style="width: 979px;">
+
             <p></p>
             <div class="mem_tit">添加地址</div>
             <form action="/home/address/store" method="post">
@@ -78,9 +57,8 @@
               <input id="btn_submt" style="width: 90px;height: 25px;line-height: 25px;overflow: hidden;background-color: #d97593;color: #FFF;font-size: 12px;font-family: '宋体';text-align: center;margin-left: 10px;border: 0;cursor: pointer;float: right; margin-right: 20px;" type="submit" class="add_b" value="确认添加">&nbsp; &nbsp; 
             </p> 
             </form>
-            
-        </div>
-    </div>
+             
+  
 <script type="text/javascript">
   $(function (){
       $("#btn_submt").click(function () {
@@ -104,4 +82,5 @@
   layer.msg(' 添加失败');
 </script>   
 @endif
+
 @endsection
