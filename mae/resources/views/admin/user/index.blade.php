@@ -67,7 +67,11 @@
 				</td>
 				<td>{{ $v->phone}}</td>
 				<td>{{ $v->email}}</td>
-				<td>{{ $v->power }}</td>
+				<td>@if($v->power ==12) 超级管理员
+					@elseif($v->power ==17)普通管理员
+					@elseif($v->power == 18)高级管理员
+					@endif
+				</td>
 				<td>{{$v->created_at}}</td>
 				<td class="td-manage">
 					<a title="修改" href="/admin/user/{{ $v->aid }}/edit" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none">
