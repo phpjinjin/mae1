@@ -14,14 +14,14 @@ class Webcontroller extends Controller
     {
     	$status = $request->status;
     	//dump($status);
-    	$webs = Webs::where('wid','2')->get();
+    	$webs = Webs::where('wid','1')->get();
 
     	
     	return view('admin.web.index',['webs'=>$webs]);
     }
     public function edit()
     {
-    	$webs = Webs::where('wid','2')->get();
+    	$webs = Webs::where('wid','1')->get();
     	return view('admin.web.edit',['webs'=>$webs]);
     }
     public function update(WebRequest $request)
