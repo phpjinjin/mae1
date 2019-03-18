@@ -29,11 +29,13 @@
                     @foreach($goods as $k=>$v)
 	                <li onmouseenter="test({{$v->gid}})" onmouseleave="test2({{$v->gid}})">
 	                    <div class="name"><a href="#">{{$v->gname}}</a>
-	                    	<a href="/home/collect/delete/{{$v->gid}}" id="{{$v->gid}}" style="background: #aaa;margin-right: 10px" hidden >
-	                    		&nbsp;取消收藏&nbsp;</a>
 	                    </div>
 	                    <div class="price">
-	                        <font>￥<span>{{$v->price}}</span></font>
+	                        <font>￥<span>{{$v->price}}</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	                    		<a href="/home/collect/delete/{{$v->gid}}" id="{{$v->gid}}" style="background: #aaa;margin-right: 10px" hidden >
+	                    			&nbsp;取消收藏&nbsp;
+	                    		</a>
+	                    	</font>
 	                    </div>
 	                    <div class="img"><a href="/home/goods/{{ $v->gid }}"><img src="{{ asset('/uploads/gpic/'.$v->goodspic[0]->gpic) }}" width="185" height="155" /></a></div>
 	                </li>

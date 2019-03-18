@@ -21,9 +21,16 @@ class HomeController extends Controller
     public function index()
     {
         $webs = Webs::get();
+        $hot = Goods::where('hot','>','0')->get();
+        $hot2 = Goods::where('hot','=','3')->get();
+        $pengzai = Goods::where('tid','=','122')->get();
+        $huashu = Goods::where('tid','=','25')->get();
+        // dd($hot2);
         $status = $webs[0]->status;
         if($status == 1){
-            return view('home.index.home');
+            return view('home.index.home',['hot'=>$hot,'hot2'=>$hot2,'pengzai'=>$pengzai,'huashu'=>$huashu]);
+        }else{
+            return view('errors.404');
         }
 
     }
