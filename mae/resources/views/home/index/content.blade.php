@@ -284,11 +284,10 @@
         <!--End 商品分类详情 End-->
         <ul class="menu_r">                              
             <li style="margin-left: 10px"><a href="/home/index">首页</a></li>
-            <li style="margin-left: 10px"><a href="/home/goods">全部商品</a></li>
-            <li style="margin-left: 10px"><a href="#xianshi">限时活动</a></li>
             <li style="margin-left: 10px"><a href="#tuijian">精品推荐</a></li>
-            <li style="margin-left: 10px"><a href="/home/article">店家甄选</a></li>
             <li style="margin-left: 10px"><a href="#xihuan">猜你喜欢</a></li>
+            <li style="margin-left: 10px"><a href="/home/goods">全部商品</a></li>
+            <li style="margin-left: 10px"><a href="/home/article">店家甄选</a></li>
         </ul>
         <div class="m_ad"></div>
     </div>
@@ -382,7 +381,12 @@
     <div class="btmbg">
         <div class="btm">
             备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright ? 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
-            <img src="/o/images/b_1.gif" width="98" height="33" /><img src="/o/images/b_2.gif" width="98" height="33" /><img src="/o/images/b_3.gif" width="98" height="33" /><img src="/o/images/b_4.gif" width="98" height="33" /><img src="/o/images/b_5.gif" width="98" height="33" /><img src="/o/images/b_6.gif" width="98" height="33" />
+            <img src="/o/images/b_1.gif" width="98" height="33" />
+            <img src="/o/images/b_2.gif" width="98" height="33" />
+            <img src="/o/images/b_3.gif" width="98" height="33" />
+            <img src="/o/images/b_4.gif" width="98" height="33" />
+            <img src="/o/images/b_5.gif" width="98" height="33" />
+            <img src="/o/images/b_6.gif" width="98" height="33" />
         </div>      
     </div>
     <!--End Footer End -->    
